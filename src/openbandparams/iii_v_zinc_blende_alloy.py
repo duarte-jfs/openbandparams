@@ -17,6 +17,7 @@
 #   along with openbandparams.  If not, see <http://www.gnu.org/licenses/>.
 #
 #############################################################################
+
 from .alloy import Alloy
 from .iii_v_alloy import IIIVAlloy
 from .iii_v_zinc_blende_strained import IIIVZincBlendeStrained001
@@ -59,7 +60,7 @@ class IIIVZincBlendeAlloy(IIIVAlloy):
         else:
             return IIIVZincBlendeStrained001(unstrained=self,
                                              strain_out_of_plane=target)
-        
+    
     @method_parameter(dependencies=['VBO', 'Eg'], units='eV')
     def CBO(self, **kwargs):
         '''
