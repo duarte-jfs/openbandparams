@@ -19,7 +19,7 @@
 #############################################################################
 
 from math import tanh
-from .references import vurgaftman_2001, adachi_1987, adachi_1982
+from .references import vurgaftman_2001, adachi_1987, adachi_1982, guden_piprek_1996
 from .parameter import ValueParameter, MethodParameter
 from .iii_v_zinc_blende_binary import IIIVZincBlendeBinary
 
@@ -151,6 +151,8 @@ AlP = IIIVZincBlendeBinary(
         ValueParameter('meff_e_X_long', 2.68, 'm_e', references=[vurgaftman_2001]),
         ValueParameter('meff_e_X_trans', 0.155, 'm_e', references=[vurgaftman_2001]),
         ValueParameter('thermal_expansion', 2.92e-5, 'angstrom/K', references=[vurgaftman_2001]),
+        ValueParameter('n_A', 24.10, 'dimensionless', references = [guden_piprek_1996]),
+        ValueParameter('n_B',-2.00, 'dimensionless', references = [guden_piprek_1996]),
     ])
 
 GaP = IIIVZincBlendeBinary(
@@ -186,7 +188,10 @@ GaP = IIIVZincBlendeBinary(
         ValueParameter('meff_e_X_long', 2., 'm_e', references=[vurgaftman_2001]),
         ValueParameter('meff_e_X_trans', 0.253, 'm_e', references=[vurgaftman_2001]),
         ValueParameter('thermal_expansion', 2.92e-5, 'angstrom/K', references=[vurgaftman_2001]),
+        ValueParameter('n_A', 22.25, 'dimensionless', references = [guden_piprek_1996]),
+        ValueParameter('n_B', 0.90, 'dimensionless', references = [guden_piprek_1996]),
     ])
+
 def GaP_Eg_Gamma(self, **kwargs):
     '''
     Returns the Gamma-valley bandgap, Eg_Gamma, in electron Volts at a
@@ -238,6 +243,8 @@ InP = IIIVZincBlendeBinary(
         ValueParameter('meff_e_L_DOS', 0.47, 'm_e', references=[vurgaftman_2001]),
         ValueParameter('meff_e_X_DOS', 0.88, 'm_e', references=[vurgaftman_2001]),
         ValueParameter('thermal_expansion', 2.79e-5, 'angstrom/K', references=[vurgaftman_2001]),
+        ValueParameter('n_A', 8.40, 'dimensionless', references = [guden_piprek_1996]),
+        ValueParameter('n_B', 6.60, 'dimensionless', references = [guden_piprek_1996]),
     ])
 
 AlAs = IIIVZincBlendeBinary(
@@ -275,6 +282,8 @@ AlAs = IIIVZincBlendeBinary(
         ValueParameter('meff_e_X_long', 0.97, 'm_e', references=[vurgaftman_2001]),
         ValueParameter('meff_e_X_trans', 0.22, 'm_e', references=[vurgaftman_2001]),
         ValueParameter('thermal_expansion', 2.9e-5, 'angstrom/K', references=[vurgaftman_2001]),
+        ValueParameter('n_A', 25.30, 'dimensionless', references = [guden_piprek_1996]),
+        ValueParameter('n_B',-0.80, 'dimensionless', references = [guden_piprek_1996]),
     ])
 
 GaAs = IIIVZincBlendeBinary(
@@ -314,6 +323,8 @@ GaAs = IIIVZincBlendeBinary(
         ValueParameter('meff_e_X_long', 1.3, 'm_e', references=[vurgaftman_2001]),
         ValueParameter('meff_e_X_trans', 0.23, 'm_e', references=[vurgaftman_2001]),
         ValueParameter('thermal_expansion', 3.88e-5, 'angstrom/K', references=[vurgaftman_2001]),
+        ValueParameter('n_A', 6.30, 'dimensionless', references = [guden_piprek_1996]),
+        ValueParameter('n_B', 9.40, 'dimensionless', references = [guden_piprek_1996]),
     ])
 
 InAs = IIIVZincBlendeBinary(
@@ -356,6 +367,8 @@ InAs = IIIVZincBlendeBinary(
         ValueParameter('meff_e_X_long', 1.13, 'm_e', references=[vurgaftman_2001]),
         ValueParameter('meff_e_X_trans', 0.16, 'm_e', references=[vurgaftman_2001]),
         ValueParameter('thermal_expansion', 2.74e-5, 'angstrom/K', references=[vurgaftman_2001]),
+        ValueParameter('n_A', 5.14, 'dimensionless', references = [guden_piprek_1996]),
+        ValueParameter('n_B', 10.15, 'dimensionless', references = [guden_piprek_1996]),
     ])
 
 AlSb = IIIVZincBlendeBinary(
@@ -393,6 +406,8 @@ AlSb = IIIVZincBlendeBinary(
         ValueParameter('meff_e_X_long', 1.357, 'm_e', references=[vurgaftman_2001]),
         ValueParameter('meff_e_X_trans', 0.123, 'm_e', references=[vurgaftman_2001]),
         ValueParameter('thermal_expansion', 2.6e-5, 'angstrom/K', references=[vurgaftman_2001]),
+        ValueParameter('n_A', 59.68, 'dimensionless', references = [guden_piprek_1996]),
+        ValueParameter('n_B', -9.53, 'dimensionless', references = [guden_piprek_1996]),
     ])
 
 GaSb = IIIVZincBlendeBinary(
@@ -430,6 +445,8 @@ GaSb = IIIVZincBlendeBinary(
         ValueParameter('meff_e_X_long', 1.51, 'm_e', references=[vurgaftman_2001]),
         ValueParameter('meff_e_X_trans', 0.22, 'm_e', references=[vurgaftman_2001]),
         ValueParameter('thermal_expansion', 4.72e-5, 'angstrom/K', references=[vurgaftman_2001]),
+        ValueParameter('n_A', 4.05, 'dimensionless', references = [guden_piprek_1996]),
+        ValueParameter('n_B', 12.66, 'dimensionless', references = [guden_piprek_1996]),
     ])
 
 InSb = IIIVZincBlendeBinary(
@@ -465,6 +482,8 @@ InSb = IIIVZincBlendeBinary(
         ValueParameter('meff_e_L_DOS', 0.25, 'm_e', references=[vurgaftman_2001]),
         ValueParameter('meff_e_X_DOS', 0.5, 'm_e'), # guess
         ValueParameter('thermal_expansion', 3.48e-5, 'angstrom/K', references=[vurgaftman_2001]),
+        ValueParameter('n_A', 7.91, 'dimensionless', references = [guden_piprek_1996]),
+        ValueParameter('n_B', 13.07, 'dimensionless', references = [guden_piprek_1996]),
     ])
 
 iii_v_zinc_blende_binaries = [AlN, GaN, InN,

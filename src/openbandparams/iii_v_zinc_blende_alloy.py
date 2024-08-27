@@ -22,8 +22,8 @@ from .alloy import Alloy
 from .iii_v_alloy import IIIVAlloy
 from .iii_v_zinc_blende_strained import IIIVZincBlendeStrained001
 from .parameter import method_parameter
-from .references import vurgaftman_2001, kane_1956, luttinger_1956
-from .equations import varshni
+from .references import vurgaftman_2001, kane_1956, luttinger_1956, guden_piprek_1996
+from .equations import varshni, refractive_index
 from math import sqrt
 
 
@@ -297,3 +297,15 @@ class IIIVZincBlendeAlloy(IIIVAlloy):
         meff = self.meff_e_Gamma(**kwargs)
         T = kwargs.get('T', 300.)
         return k*T/Eg * (1 - meff)**2
+
+    @method_parameter(dependencies = ['Eg_Gamma', 'Delta_SO', 'n_A', 'n_B'],
+                      units = 'dimensionless', references = [guden_piprek_1996])
+    def refractive_index(self, **kwargs):
+        Eg = self.Eg_Gamma(**kwargs)
+        SO = self.Delta_SO(**kwargs)
+        A = self.n_A(**kwargs)
+        B = self.n_B(**kwargs)
+        E0 = kwargs.get('E0', 0.8) #eV
+
+        return refractive_index(E0, Eg, SO, A, B)
+        

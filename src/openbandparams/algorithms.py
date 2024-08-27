@@ -18,13 +18,7 @@
 #
 #############################################################################
 
-
-def sign(x):
-    """
-    Returns -1, 0, or 1 if `x` is negative, zero, or positive, respectively.
-    """
-    return cmp(x, 0)
-
+from numpy import sign
 
 def bisect(func, a, b, xtol=1e-12, maxiter=100):
     """
@@ -60,7 +54,7 @@ def bisect(func, a, b, xtol=1e-12, maxiter=100):
 
     assert sign(fa) != sign(fb)
 
-    for i in xrange(maxiter):
+    for i in range(maxiter):
         c = (a + b) / 2.
         fc = func(c)
         if fc == 0. or abs(b - a) / 2. < xtol:

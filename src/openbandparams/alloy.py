@@ -51,8 +51,8 @@ class Alloy(object):
         try:
             item = super(Alloy, self).__getattribute__(name)
         except AttributeError as e:
-            msg = e.message.replace('object',
-                                    "object '{}'".format(self.name))
+            msg = str(e).replace('object',
+                                 "object '{}'".format(self.name))
             raise AttributeError(msg)
         if isinstance(item, MethodParameter):
             # make sure MethodParameters defined with the class
@@ -151,7 +151,7 @@ class Alloy(object):
         Returns a list of the unique parameters (no duplicates).
         '''
         # start with parameters in the `_parameters` dictionary
-        parameters = self._parameters.values()
+        parameters = list(self._parameters.values())
         # add parameters defined with the class
         for name in dir(self):
             item = getattr(self, name)

@@ -1,3 +1,8 @@
+import os
+import sys
+from openbandparams import *
+import string
+
 #
 #   Copyright (c) 2013-2014, Scott J Maddox
 #
@@ -18,69 +23,65 @@
 #
 #############################################################################
 # Make sure we import the local openbandparams version
-import os
-import sys
 sys.path.insert(0,
-    os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
-from openbandparams import *
+       os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 
 # Print an unformatted temperature dependent parameters
-print 'GaAs bandgap (at T = 300 K): ', GaAs.Eg(), 'eV'
-print ''
+print('GaAs bandgap (at T = 300 K): ', GaAs.Eg(), 'eV')
+print('')
 
 # Print some temperature dependent parameters
-print 'GaAs bandgap (at T = 300 K):  %.3f eV' % GaAs.Eg()
-print 'GaAs Gamma-valley gap (at T = 300 K):  %.3f eV' % GaAs.Eg_Gamma()
-print 'GaAs X-valley gap (at T = 300 K):  %.3f eV' % GaAs.Eg_X()
-print 'GaAs bandgap (at T = 0 K):  %.3f eV' % GaAs.Eg(T=0)
-print 'InAs bandgap (at T = 300 K):  %.3f eV' % InAs.Eg()
-print ''
+print('GaAs bandgap (at T = 300 K):  %.3f eV' % GaAs.Eg())
+print('GaAs Gamma-valley gap (at T = 300 K):  %.3f eV' % GaAs.Eg_Gamma())
+print('GaAs X-valley gap (at T = 300 K):  %.3f eV' % GaAs.Eg_X())
+print('GaAs bandgap (at T = 0 K):  %.3f eV' % GaAs.Eg(T=0))
+print('InAs bandgap (at T = 300 K):  %.3f eV' % InAs.Eg())
+print('')
 
 # Print some temperature independent parameter
-print ('GaAs electron effective mass in'
-       ' the Gamma-valley:  %.3f m0' % GaAs.meff_e_Gamma())
-print ''
-print ('GaAs electron effective mass in the X-valley '
-       'in the longitudinal direction:  %.3f m0' % GaAs.meff_e_X_long())
-print ('GaAs electron effective mass in the X-valley '
-       'in the transverse direction:  %.3f m0' % GaAs.meff_e_X_trans())
-print ('GaAs electron density-of-states effective mass in'
-       ' the X-valley:  %.3f m0' % GaAs.meff_e_X_DOS())
-print ''
-print ('GaAs electron effective mass in the L-valley '
-       'in the longitudinal direction:  %.3f m0' % GaAs.meff_e_L_long())
-print ('GaAs electron effective mass in the L-valley '
-       'in the transverse direction:  %.3f m0' % GaAs.meff_e_L_trans())
-print ('GaAs electron density-of-states effective mass in'
-       ' the L-valley:  %.3f m0' % GaAs.meff_e_L_DOS())
-print ''
-print ('GaAs heavy-hole effective mass '
-       'in the [100] direction:  %.3f m0' % GaAs.meff_hh_100())
-print ('GaAs heavy-hole effective mass '
-       'in the [110] direction:  %.3f m0' % GaAs.meff_hh_110())
-print ('GaAs heavy-hole effective mass '
-       'in the [111] direction:  %.3f m0' % GaAs.meff_hh_111())
-print ''
-print ('GaAs light-hole effective mass '
-       'in the [100] direction:  %.3f m0' % GaAs.meff_lh_100())
-print ('GaAs light-hole effective mass '
-       'in the [110] direction:  %.3f m0' % GaAs.meff_lh_110())
-print ('GaAs light-hole effective mass '
-       'in the [111] direction:  %.3f m0' % GaAs.meff_lh_111())
-print ''
-print ('GaAs split-off band effective mass:'
-       '  %.3f m0' % GaAs.meff_SO())
-print ''
+print('GaAs electron effective mass in'
+          ' the Gamma-valley:  %.3f m0' % GaAs.meff_e_Gamma())
+print('')
+print('GaAs electron effective mass in the X-valley '
+          'in the longitudinal direction:  %.3f m0' % GaAs.meff_e_X_long())
+print('GaAs electron effective mass in the X-valley '
+          'in the transverse direction:  %.3f m0' % GaAs.meff_e_X_trans())
+print('GaAs electron density-of-states effective mass in'
+          ' the X-valley:  %.3f m0' % GaAs.meff_e_X_DOS())
+print('')
+print('GaAs electron effective mass in the L-valley '
+          'in the longitudinal direction:  %.3f m0' % GaAs.meff_e_L_long())
+print('GaAs electron effective mass in the L-valley '
+          'in the transverse direction:  %.3f m0' % GaAs.meff_e_L_trans())
+print('GaAs electron density-of-states effective mass in'
+          ' the L-valley:  %.3f m0' % GaAs.meff_e_L_DOS())
+print('')
+print('GaAs heavy-hole effective mass '
+          'in the [100] direction:  %.3f m0' % GaAs.meff_hh_100())
+print('GaAs heavy-hole effective mass '
+          'in the [110] direction:  %.3f m0' % GaAs.meff_hh_110())
+print('GaAs heavy-hole effective mass '
+          'in the [111] direction:  %.3f m0' % GaAs.meff_hh_111())
+print('')
+print('GaAs light-hole effective mass '
+          'in the [100] direction:  %.3f m0' % GaAs.meff_lh_100())
+print('GaAs light-hole effective mass '
+          'in the [110] direction:  %.3f m0' % GaAs.meff_lh_110())
+print('GaAs light-hole effective mass '
+          'in the [111] direction:  %.3f m0' % GaAs.meff_lh_111())
+print('')
+print('GaAs split-off band effective mass:'
+          '  %.3f m0' % GaAs.meff_SO())
+print('')
 
 # Print a table of material lattice parameters and bandgaps
-import string
-print ' Material | Lattice Param. [Ang] | Bandgap [eV]'
-print '------------------------------------------------'
+print(' Material | Lattice Param. [Ang] | Bandgap [eV]')
+print('------------------------------------------------')
 for mat in iii_v_zinc_blende_binaries:
-    print string.rjust(str(mat), 7),
-    try:
-        a = mat.a()
-    except:
-        a = mat.a_300K()
-    print '  | ', string.rjust('%.3f' % a, 12), ' ' * 4,
-    print '  |    %.3f' % mat.Eg()
+       print(str(mat).rjust(7), end='  | ')
+       try:
+              a = mat.a()
+       except:
+              a = mat.a_300K()
+       print(f'{a:.3f}'.rjust(12), ' ' * 4, end='  |    ')
+       print('%.3f' % mat.Eg())

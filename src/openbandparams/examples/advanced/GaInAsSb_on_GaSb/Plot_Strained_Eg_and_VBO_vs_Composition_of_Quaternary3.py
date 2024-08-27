@@ -32,15 +32,15 @@ alloy = GaInAsSb
 
 # calculate the data
 T = 300  # K
-N = 100
+N = 20
 xs = numpy.linspace(0, 1, N)
 ys = numpy.linspace(0, 1, N)
 X, Y = numpy.meshgrid(xs, ys)
-Z = numpy.empty(shape=(N, N), dtype=numpy.double)
-W = numpy.empty(shape=(N, N), dtype=numpy.double)
-S = numpy.empty(shape=(N, N), dtype=numpy.double)
-for i in xrange(N):
-    for j in xrange(N):
+Z = numpy.empty(shape=(N, N), dtype=numpy.float64)
+W = numpy.empty(shape=(N, N), dtype=numpy.float64)
+S = numpy.empty(shape=(N, N), dtype=numpy.float64)
+for i in range(N):
+    for j in range(N):
         strained = alloy(x=X[i, j], y=Y[i, j]).strained_001(GaSb)
         strain = strained.strain_out_of_plane(T=T)
         if False:#not (0. <= strain <= 0.03):

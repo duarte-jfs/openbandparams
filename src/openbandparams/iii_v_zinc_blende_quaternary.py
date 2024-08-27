@@ -413,9 +413,24 @@ class IIIVZincBlendeQuaternary(IIIVZincBlendeMixedAlloy):
     def _interpolate1or2(self, name, kwargs):
         x, y, z = self._xyz
 
-        u = (1. + x - y) / 2.
+        u = (1. - x + y) / 2.
         v = (1. + y - z) / 2.
         w = (1. + x - z) / 2.
+
+        from numpy import isclose
+        if isclose(abs(u), 0):
+            u = 0
+        if isclose(abs(v), 0):
+            v = 0
+        if isclose(abs(w), 0):
+            w = 0
+
+        if isclose(abs(u), 1):
+            u = 1
+        if isclose(abs(v), 1):
+            v = 1
+        if isclose(abs(w), 1):
+            w = 1
 
         t12 = self.ternaries[0](x=u)
         t13 = self.ternaries[1](x=w)

@@ -18,6 +18,15 @@
 #
 #############################################################################
 
+from numpy import sqrt
 
 def varshni(Eg_0, alpha, beta, T):
     return Eg_0 - alpha * T ** 2 / (T + beta)
+
+def refractive_index(E0, Eg, SO, A, B):
+    x0 = E0/Eg
+    x0s = E0/(Eg + SO)
+    fx0 = x0**-2 * (2-sqrt(1+x0)-sqrt(1-x0))
+    fx0s = x0s**-2 * (2-sqrt(1+x0s)-sqrt(1-x0s))
+
+    return sqrt(A * (fx0 + 0.5*(Eg/(Eg+SO))**1.5*fx0s)+B)

@@ -158,7 +158,7 @@ class MethodParameter(Parameter):
                 p = self.alloy.get_parameter(d, default=None)
                 if p is not None and p not in params:
                     params.append(p)
-                    for ref in p.get_references():
+                    for ref in p._references:
                         if ref not in refs:
                             refs.append(ref)
             if hasattr(self.alloy, 'binaries'):
@@ -192,7 +192,7 @@ def method_parameter(dependencies, units,
         to the `parameters` dictionary, unless a `Parameter` with the same
         name has already been added.
         '''
-        name = method.func_name
+        name = method.__name__
         return MethodParameter(name, method, dependencies, units,
                                aliases, references)
     return decorator
@@ -281,4 +281,6 @@ descriptions = {
     'strain_out_of_plane' : 'strain in the out-of-plane direction '
                             '(the strain measured by X-ray diffraction '
                             'symmetric omega-2theta scans)',
+    'n_A': 'refractive index constant A',
+    'n_B': 'refractive index constant B',
 }

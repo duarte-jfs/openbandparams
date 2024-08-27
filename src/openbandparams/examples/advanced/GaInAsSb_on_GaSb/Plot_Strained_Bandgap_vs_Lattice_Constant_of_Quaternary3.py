@@ -57,9 +57,9 @@ for x, y, label in zip(xs, ys, labels):
 # plot the quaternary
 indices = numpy.arange(100)
 fractions = numpy.linspace(0, 1, 100)
-x = numpy.empty(100, dtype=numpy.float)
-Eg_hh = numpy.empty(100, dtype=numpy.float)
-Eg_lh = numpy.empty(100, dtype=numpy.float)
+x = numpy.empty(100, dtype=numpy.float32)
+Eg_hh = numpy.empty(100, dtype=numpy.float32)
+Eg_lh = numpy.empty(100, dtype=numpy.float32)
 first = True
 for xfrac in numpy.linspace(0, 1, 10):
     for i, yfrac in zip(indices, fractions):

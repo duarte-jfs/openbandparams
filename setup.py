@@ -38,5 +38,4 @@ setup(
       package_dir={'openbandparams': 'src/openbandparams'},
       test_suite='openbandparams.tests',
       zip_safe=True,
-      use_2to3=True,
       )

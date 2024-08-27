@@ -20,6 +20,24 @@
 
 from .reference import BibtexReference
 
+guden_piprek_1996 = BibtexReference('''
+@article{guden_material_1996,
+	title = {Material parameters of quaternary {III} - {V} semiconductors for multilayer mirrors at wavelength},
+	volume = {4},
+	issn = {0965-0393, 1361-651X},
+	url = {https://iopscience.iop.org/article/10.1088/0965-0393/4/4/002},
+	doi = {10.1088/0965-0393/4/4/002},
+	number = {4},
+	urldate = {2024-08-15},
+	journal = {Modelling and Simulation in Materials Science and Engineering},
+	author = {Guden, M and Piprek, J},
+	month = jul,
+	year = {1996},
+	pages = {349--357},
+	file = {Guden_Piprek_1996_Material parameters of quaternary III - V semiconductors for multilayer mirrors.pdf:C\:\\Users\\20230622\\OneDrive - TU Eindhoven\\PhD\\ZOTERO_drive\\Guden_Piprek_1996_Material parameters of quaternary III - V semiconductors for multilayer mirrors.pdf:application/pdf},
+}
+
+''')
 
 vurgaftman_2001 = BibtexReference('''
 @article{vurgaftman_2001,

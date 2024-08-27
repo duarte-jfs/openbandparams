@@ -37,8 +37,8 @@ xs = numpy.linspace(0, 1, N)
 ys = numpy.linspace(0, 1, N)
 X, Y = numpy.meshgrid(xs, ys)
 Z = numpy.empty(shape=(N, N), dtype=numpy.double)
-for i in xrange(N):
-    for j in xrange(N):
+for i in range(N):
+    for j in range(N):
         Z[i, j] = alloy(x=X[i, j], y=Y[i, j]).Eg(T=T)
 
 # plot it
