@@ -19,7 +19,11 @@
 #############################################################################
 
 from math import tanh
-from .references import vurgaftman_2001, adachi_1987, adachi_1982, guden_piprek_1996
+from .references import (vurgaftman_2001, 
+                         adachi_1987, 
+                         adachi_1982, 
+                         guden_piprek_1996, 
+                         taylor_tolstikhin_2000)
 from .parameter import ValueParameter, MethodParameter
 from .iii_v_zinc_blende_binary import IIIVZincBlendeBinary
 
@@ -236,9 +240,12 @@ InP = IIIVZincBlendeBinary(
         ValueParameter('d', -5., 'eV', references=[vurgaftman_2001]),
         ValueParameter('dielectric', 12.3, 'dimensionless', references=[adachi_1982]),
         ValueParameter('dielectric_high_frequency', 9.6, 'dimensionless', references=[adachi_1982]),
-        ValueParameter('luttinger1', 5.08, 'dimensionless', references=[vurgaftman_2001]),
-        ValueParameter('luttinger2', 1.6, 'dimensionless', references=[vurgaftman_2001]),
-        ValueParameter('luttinger3', 2.1, 'dimensionless', references=[vurgaftman_2001]),
+        # ValueParameter('luttinger1', 5.08, 'dimensionless', references=[vurgaftman_2001]),
+        # ValueParameter('luttinger2', 1.6, 'dimensionless', references=[vurgaftman_2001]),
+        # ValueParameter('luttinger3', 2.1, 'dimensionless', references=[vurgaftman_2001]),
+        ValueParameter('luttinger1', 4.95, 'dimensionless', references=[taylor_tolstikhin_2000]),
+        ValueParameter('luttinger2', 1.65, 'dimensionless', references=[taylor_tolstikhin_2000]),
+        ValueParameter('luttinger3', 1.95, 'dimensionless', references=[taylor_tolstikhin_2000]),
         ValueParameter('meff_e_Gamma_0', 0.0795, 'm_e', references=[vurgaftman_2001]),
         ValueParameter('meff_e_L_DOS', 0.47, 'm_e', references=[vurgaftman_2001]),
         ValueParameter('meff_e_X_DOS', 0.88, 'm_e', references=[vurgaftman_2001]),
@@ -312,9 +319,12 @@ GaAs = IIIVZincBlendeBinary(
         ValueParameter('d', -4.8, 'eV', references=[vurgaftman_2001]),
         ValueParameter('dielectric', 13.0, 'dimensionless', references=[adachi_1982]),
         ValueParameter('dielectric_high_frequency', 11.15, 'dimensionless', references=[adachi_1982]),
-        ValueParameter('luttinger1', 6.98, 'dimensionless', references=[vurgaftman_2001]),
-        ValueParameter('luttinger2', 2.06, 'dimensionless', references=[vurgaftman_2001]),
-        ValueParameter('luttinger3', 2.93, 'dimensionless', references=[vurgaftman_2001]),
+        # ValueParameter('luttinger1', 6.98, 'dimensionless', references=[vurgaftman_2001]),
+        # ValueParameter('luttinger2', 2.06, 'dimensionless', references=[vurgaftman_2001]),
+        # ValueParameter('luttinger3', 2.93, 'dimensionless', references=[vurgaftman_2001]),
+        ValueParameter('luttinger1', 6.8, 'dimensionless', references=[taylor_tolstikhin_2000]),
+        ValueParameter('luttinger2', 1.9, 'dimensionless', references=[taylor_tolstikhin_2000]),
+        ValueParameter('luttinger3', 2.51, 'dimensionless', references=[taylor_tolstikhin_2000]),
         ValueParameter('meff_e_Gamma_0', 0.067, 'm_e', references=[vurgaftman_2001]),
         ValueParameter('meff_e_L_DOS', 0.56, 'm_e', references=[vurgaftman_2001]),
         ValueParameter('meff_e_L_long', 1.9, 'm_e', references=[vurgaftman_2001]),

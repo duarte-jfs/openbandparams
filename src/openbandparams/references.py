@@ -20,6 +20,26 @@
 
 from .reference import BibtexReference
 
+taylor_tolstikhin_2000 = BibtexReference('''
+    @article{taylor_intervalence_2000,
+	title = {Intervalence band absorption in {InP} and related materials for optoelectronic device modeling},
+	volume = {87},
+	issn = {0021-8979, 1089-7550},
+	url = {https://pubs.aip.org/jap/article/87/3/1054/489682/Intervalence-band-absorption-in-InP-and-related},
+	doi = {10.1063/1.371979},
+	abstract = {Intervalence band absorption spectra of InP and related materials over a range of temperatures are calculated using different k⋅p methods for band structure. It is shown that band structure models which neglect valence band intermixing effects, such as the Kane model, fail to provide any quantitative agreement with experiment. However, the Luttinger–Kohn model [Phys. Rev. 97, 869 (1955)] if properly fitted, does yield quantitatively accurate results for InP, GaAs, and InGaAs, in wide spectral and temperature ranges of interest for practical optoelectronic devices without adjusting the effective masses and split-off energy.},
+	language = {en},
+	number = {3},
+	urldate = {2024-08-12},
+	journal = {Journal of Applied Physics},
+	author = {Taylor, Jason and Tolstikhin, Valery},
+	month = feb,
+	year = {2000},
+	pages = {1054--1059},
+	file = {Taylor_Tolstikhin_2000_Intervalence band absorption in InP and related materials for optoelectronic.pdf:C\:\\Users\\20230622\\OneDrive - TU Eindhoven\\PhD\\ZOTERO_drive\\Taylor_Tolstikhin_2000_Intervalence band absorption in InP and related materials for optoelectronic.pdf:application/pdf},
+}
+''')
+
 guden_piprek_1996 = BibtexReference('''
 @article{guden_material_1996,
 	title = {Material parameters of quaternary {III} - {V} semiconductors for multilayer mirrors at wavelength},

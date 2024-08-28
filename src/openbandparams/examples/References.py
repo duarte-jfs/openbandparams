@@ -28,6 +28,5 @@ from openbandparams import *
 
 parameter = InAsSb(x=0).refractive_index
 # parameter = InAsSb(x=0).Eg
-
 for ref in parameter.get_references():
     print(ref)
