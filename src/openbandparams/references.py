@@ -20,6 +20,21 @@
 
 from .reference import BibtexReference
 
+chuang_1995 = BibtexReference('''
+    @book{chuang_physics_1995,
+	address = {New York},
+	series = {Wiley series in pure and applied optics},
+	title = {Physics of optoelectronic devices},
+	isbn = {978-0-471-10939-6},
+	publisher = {Wiley},
+	author = {Chuang, Shun Lien},
+	year = {1995},
+	keywords = {Electrooptical devices, Electrooptics, Semiconductors},
+	annote = {"A Wiley-Interscience publication."},
+	file = {Chuang_1995_Physics of optoelectronic devices.pdf:C\:\\Users\\20230622\\OneDrive - TU Eindhoven\\PhD\\ZOTERO_drive\\Chuang_1995_Physics of optoelectronic devices.pdf:application/pdf},
+}
+''')
+
 taylor_tolstikhin_2000 = BibtexReference('''
     @article{taylor_intervalence_2000,
 	title = {Intervalence band absorption in {InP} and related materials for optoelectronic device modeling},

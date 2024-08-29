@@ -24,8 +24,8 @@ def varshni(Eg_0, alpha, beta, T):
     return Eg_0 - alpha * T ** 2 / (T + beta)
 
 def refractive_index(E0, Eg, SO, A, B):
-    x0 = E0/Eg
-    x0s = E0/(Eg + SO)
+    x0 = E0/Eg + 0j
+    x0s = E0/(Eg + SO) + 0j
     fx0 = x0**-2 * (2-sqrt(1+x0)-sqrt(1-x0))
     fx0s = x0s**-2 * (2-sqrt(1+x0s)-sqrt(1-x0s))
 
