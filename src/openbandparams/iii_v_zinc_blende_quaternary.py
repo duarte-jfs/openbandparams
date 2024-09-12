@@ -151,6 +151,10 @@ class IIIVZincBlendeQuaternary(IIIVZincBlendeMixedAlloy):
         if (not (0. <= x <= 1.) or not (0. <= y <= 1.) or
             z is not None and not (0. <= z <= 1.)        ):
             raise ValueError('The alloy fractions must be between 0 and 1')
+        
+        self._x = x
+        self._y = y
+        self._z = z
         return x, y, z
     
     def _instance(self, x=None, y=None, z=None):

@@ -127,8 +127,8 @@ GaInAs = IIIVZincBlendeTernary(
         # ValueParameter('meff_hh_100_bowing', -0.145, 'm_e', references=[vurgaftman_2001]),
         # ValueParameter('meff_lh_100_bowing', 0.0202, 'm_e', references=[vurgaftman_2001]),
         # ValueParameter('luttinger32_bowing', 0.481, 'm_e', references=[vurgaftman_2001]),
-        ValueParameter('meff_hh_100_bowing', -0.500, 'm_e', references=[chuang_1995]), #This was chosen to match the mhh of InGaAs lattice matched to InP at 300K
-        ValueParameter('meff_lh_100_bowing', 0.035, 'm_e', references=[chuang_1995]), #This was chosen to match the mlh of InGaAs lattice matched to InP at 300K
+        ValueParameter('meff_hh_100_bowing', -0.502, 'm_e', references=[chuang_1995]), #This was chosen to match the mhh of InGaAs lattice matched to InP at 300K
+        ValueParameter('meff_lh_100_bowing', 0.024, 'm_e', references=[taylor_tolstikhin_2000]), #This was chosen to match the mlh of InGaAs lattice matched to InP at 300K
         ValueParameter('luttinger32_bowing', 7.33, 'm_e', references=[taylor_tolstikhin_2000]), #This was chosen to match the gamma3 used in the reference for InGaAs lattice matched to InP at 300K
 
         #TODO: estimate F_bowing to get meff_e_Gamma_bowing = 0.0091
