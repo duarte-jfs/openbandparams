@@ -23,7 +23,9 @@ from .references import (vurgaftman_2001,
                          adachi_1987, 
                          adachi_1982, 
                          guden_piprek_1996, 
-                         taylor_tolstikhin_2000)
+                         taylor_tolstikhin_2000,
+                         LandoltBornstein2001,
+                         materialsProject)
 from .parameter import ValueParameter, MethodParameter
 from .iii_v_zinc_blende_binary import IIIVZincBlendeBinary
 
@@ -148,6 +150,8 @@ AlP = IIIVZincBlendeBinary(
         ValueParameter('c12', 63., 'GPa', references=[vurgaftman_2001]),
         ValueParameter('c44', 61.5, 'GPa', references=[vurgaftman_2001]),
         ValueParameter('d', -4.6, 'eV', references=[vurgaftman_2001]),
+        ValueParameter('dielectric', 10.41, 'dimensionless', references=[materialsProject]),
+        ValueParameter('dielectric_high_frequency', 9.0, 'dimensionless', references=[LandoltBornstein2001]),
         ValueParameter('luttinger1', 3.35, 'dimensionless', references=[vurgaftman_2001]),
         ValueParameter('luttinger2', 0.71, 'dimensionless', references=[vurgaftman_2001]),
         ValueParameter('luttinger3', 1.23, 'dimensionless', references=[vurgaftman_2001]),

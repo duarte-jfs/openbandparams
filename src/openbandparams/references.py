@@ -239,3 +239,36 @@ luttinger_1956 = BibtexReference('''
     pages = {1030--1041}
 }
 ''')
+
+LandoltBornstein2001 = BibtexReference('''
+@Misc{LandoltBornstein2001:sm_lbs_978-3-540-31355-7_55,
+    editor="Madelung, O.
+    and R{\"o}ssler, U.
+    and Schulz, M.",
+    title="Aluminum phosphide (AlP) dielectric constants: Datasheet from Landolt-B{\"o}rnstein - Group III Condensed Matter {\textperiodcentered} Volume 41A1$\alpha$: ``Group IV Elements, IV-IV and III-V Compounds. Part a - Lattice Properties'' in SpringerMaterials (https://doi.org/10.1007/10551045{\_}55)",
+    publisher="Springer-Verlag Berlin Heidelberg",
+    note="Copyright 2001 Springer-Verlag Berlin Heidelberg",
+    note="Part of SpringerMaterials",
+    note="accessed 2024-11-08",
+    doi="10.1007/10551045_55",
+    url="https://materials.springer.com/lb/docs/sm_lbs_978-3-540-31355-7_55",
+}
+''')
+
+materialsProject = BibtexReference('''
+@article{10.1063/1.4812323,
+    author = {Jain, Anubhav and Ong, Shyue Ping and Hautier, Geoffroy and Chen, Wei and Richards, William Davidson and Dacek, Stephen and Cholia, Shreyas and Gunter, Dan and Skinner, David and Ceder, Gerbrand and Persson, Kristin A.},
+    title = "{Commentary: The Materials Project: A materials genome approach to accelerating materials innovation}",
+    journal = {APL Materials},
+    volume = {1},
+    number = {1},
+    pages = {011002},
+    year = {2013},
+    month = {07},
+    abstract = "{Accelerating the discovery of advanced materials is essential for human welfare and sustainable, clean energy. In this paper, we introduce the Materials Project (www.materialsproject.org), a core program of the Materials Genome Initiative that uses high-throughput computing to uncover the properties of all known inorganic materials. This open dataset can be accessed through multiple channels for both interactive exploration and data mining. The Materials Project also seeks to create open-source platforms for developing robust, sophisticated materials analyses. Future efforts will enable users to perform ‘‘rapid-prototyping’’ of new materials in silico, and provide researchers with new avenues for cost-effective, data-driven materials design.}",
+    issn = {2166-532X},
+    doi = {10.1063/1.4812323},
+    url = {https://doi.org/10.1063/1.4812323},
+    eprint = {https://pubs.aip.org/aip/apm/article-pdf/doi/10.1063/1.4812323/13163869/011002\_1\_online.pdf},
+}
+''')
