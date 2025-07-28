@@ -238,6 +238,7 @@ descriptions = {
     'luttinger32' : 'difference between third and second Luttinger parameters '
                     '(luttinger3 - luttinger2)',
     'meff_SO' : 'split-off band effective mass',
+    'meff_so' : 'split-off band effective mass from the literature',
     'meff_SO_0' : 'split-off band effective mass at 0 K',
     'meff_e_Gamma' : 'electron effective mass in the Gamma-valley',
     'meff_e_Gamma_0' : 'electron effective mass in the Gamma-valley at 0 K',

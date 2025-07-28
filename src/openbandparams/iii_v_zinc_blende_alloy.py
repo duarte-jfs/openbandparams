@@ -191,14 +191,20 @@ class IIIVZincBlendeAlloy(IIIVAlloy):
     
     @method_parameter(dependencies=['luttinger1', 'Eg_Gamma', 'Delta_SO', 'Ep'],
                       units='m_e', references=[vurgaftman_2001])
-    def meff_SO(self, **kwargs):
+    def meff_SO(self, literature_value=False, **kwargs):
         '''
         Returns the split-off hole effective mass
         calculated from Eg_Gamma(T), Delta_SO, Ep and F.
         
         Interpolation of Eg_Gamma(T), Delta_SO, Ep and luttinger1, and
         then calculation of meff_SO is recommended for alloys.
+
+        If `literature_value` is True, the value from the literature directly. If False, it is computed from the dependencies
         '''
+
+        if literature_value:
+            return self.meff_so(**kwargs)
+        
         Eg = self.Eg_Gamma(**kwargs)
         Delta_SO = self.Delta_SO(**kwargs)
         Ep = self.Ep(**kwargs)
@@ -308,4 +314,5 @@ class IIIVZincBlendeAlloy(IIIVAlloy):
         E0 = kwargs.get('E0', 0.8) #eV
 
         return refractive_index(E0, Eg, SO, A, B)
+    
         
