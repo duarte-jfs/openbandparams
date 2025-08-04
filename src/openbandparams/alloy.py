@@ -18,6 +18,7 @@
 #
 #############################################################################
 
+from distro import name
 from .parameter import Parameter, MethodParameter
 
 __all__ = ['Alloy']
@@ -67,6 +68,17 @@ class Alloy(object):
 #     def __repr__(self):
 #         return self.name
     
+    def __deepcopy__(self, memo):
+        from copy import deepcopy
+        cls = self.__class__
+        result = cls.__new__(cls)
+        memo[id(self)] = result
+
+        for attr in ['name', 'elements', '_parameters', '_aliases']:
+            setattr(result, attr, deepcopy(getattr(self, attr), memo))
+
+        return result
+
     def latex(self):
         '''
         Returns a LaTeX representation of the alloy.
