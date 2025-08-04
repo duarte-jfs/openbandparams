@@ -59,6 +59,28 @@ class IIIVZincBlendeTernary(IIIVZincBlendeMixedAlloy):
                 self._parameters == other._parameters,
                 self._x == other._x)
     
+    def __deepcopy__(self, memo):
+        from copy import deepcopy
+        cls = self.__class__
+        result = cls.__new__(cls)
+        memo[id(self)] = result
+
+        for attr in [
+            'name', 
+            'elements', 
+            '_parameters', 
+            '_aliases', 
+            '_x', 
+            'binaries',
+            '_type',
+            '_element_x',
+            '_element_1mx',
+            '_element_y'
+            ]:
+            setattr(result, attr, deepcopy(getattr(self, attr), memo))
+
+        return result
+    
     def _instance(self, x=None):
         instance = IIIVZincBlendeTernary(self.name, self.elements,
                                          self.binaries, x=x)

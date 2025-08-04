@@ -42,3 +42,14 @@ class IIIVZincBlendeBinary(IIIVZincBlendeAlloy):
             return 1.
         else:
             return 0.
+        
+    def __deepcopy__(self, memo):
+        from copy import deepcopy
+        cls = self.__class__
+        result = cls.__new__(cls)
+        memo[id(self)] = result
+
+        for attr in ['name', 'elements', '_parameters', '_aliases']:
+            setattr(result, attr, deepcopy(getattr(self, attr), memo))
+
+        return result

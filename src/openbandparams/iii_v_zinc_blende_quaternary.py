@@ -113,6 +113,39 @@ class IIIVZincBlendeQuaternary(IIIVZincBlendeMixedAlloy):
                 self.ternaries == other.ternaries,
                 self._parameters == other._parameters,
                 self._xyz == other._xyz)
+    
+    def __deepcopy__(self, memo):
+        from copy import deepcopy
+        cls = self.__class__
+        result = cls.__new__(cls)
+        memo[id(self)] = result
+
+        for attr in [
+            'name', 
+            'elements', 
+            '_parameters', 
+            '_aliases', 
+            '_xyz', 
+            'ternaries', 
+            '_type',
+            '_x',
+            '_y',
+            '_z',
+            ]:
+            setattr(result, attr, deepcopy(getattr(self, attr), memo))
+
+        type = getattr(self, '_type')
+        if type == 1:
+            for attr in ['_element_w', '_element_x', '_element_y', '_element_z']:
+                setattr(result, attr, deepcopy(getattr(self, attr), memo))
+        elif type == 2:
+            for attr in ['_element_x', '_element_y', '_element_z', '_element_w']:
+                setattr(result, attr, deepcopy(getattr(self, attr), memo))
+        elif type == 3:
+            for attr in ['_element_x', '_element_1mx', '_element_y', '_element_1my']:
+                setattr(result, attr, deepcopy(getattr(self, attr), memo))
+
+        return result
 
     def _parse_xyz(self, x, y, z):
         if self._type == 1 or self._type == 2:
