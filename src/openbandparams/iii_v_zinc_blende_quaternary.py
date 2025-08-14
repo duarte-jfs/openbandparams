@@ -516,6 +516,9 @@ class IIIVZincBlendeQuaternary(IIIVZincBlendeMixedAlloy):
             return num / denom
 
     def _interpolate3(self, name, kwargs):
+        """
+        Implements eq15 of https://pubs.aip.org/aip/jap/article/101/1/013520/916821/Interpolation-of-quaternary-III-V-alloy-parameters
+        """
         x, y, _ = self._xyz
 
         # B1 = Q(0, 0) = BD = InSb

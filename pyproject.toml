@@ -12,6 +12,11 @@ license = {text = "AGPLv3"}
 authors = [
     {name = "Scott J. Maddox", email = "smaddox@utexas.edu"}
 ]
+dependencies = [
+  "distro",
+  "numpy",
+  
+]
 
 [project.urls]
 Homepage = "http://scott-maddox.github.io/openbandparams"
