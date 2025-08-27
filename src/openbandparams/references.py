@@ -31,7 +31,6 @@ chuang_1995 = BibtexReference('''
 	year = {1995},
 	keywords = {Electrooptical devices, Electrooptics, Semiconductors},
 	annote = {"A Wiley-Interscience publication."},
-	file = {Chuang_1995_Physics of optoelectronic devices.pdf:C\:\\Users\\20230622\\OneDrive - TU Eindhoven\\PhD\\ZOTERO_drive\\Chuang_1995_Physics of optoelectronic devices.pdf:application/pdf},
 }
 ''')
 
@@ -51,7 +50,6 @@ taylor_tolstikhin_2000 = BibtexReference('''
 	month = feb,
 	year = {2000},
 	pages = {1054--1059},
-	file = {Taylor_Tolstikhin_2000_Intervalence band absorption in InP and related materials for optoelectronic.pdf:C\:\\Users\\20230622\\OneDrive - TU Eindhoven\\PhD\\ZOTERO_drive\\Taylor_Tolstikhin_2000_Intervalence band absorption in InP and related materials for optoelectronic.pdf:application/pdf},
 }
 ''')
 
@@ -68,8 +66,7 @@ guden_piprek_1996 = BibtexReference('''
 	author = {Guden, M and Piprek, J},
 	month = jul,
 	year = {1996},
-	pages = {349--357},
-	file = {Guden_Piprek_1996_Material parameters of quaternary III - V semiconductors for multilayer mirrors.pdf:C\:\\Users\\20230622\\OneDrive - TU Eindhoven\\PhD\\ZOTERO_drive\\Guden_Piprek_1996_Material parameters of quaternary III - V semiconductors for multilayer mirrors.pdf:application/pdf},
+	pages = {349--357}
 }
 
 ''')

@@ -22,6 +22,8 @@ __all__ = ['IIIVZincBlendeQuaternary']
 from .iii_v_zinc_blende_mixed_alloy import IIIVZincBlendeMixedAlloy
 from .algorithms import bisect
 
+from typing import overload
+
 class IIIVZincBlendeQuaternary(IIIVZincBlendeMixedAlloy):
     '''
     The base class for all III-V zinc blende quaternary alloys.
@@ -256,7 +258,15 @@ class IIIVZincBlendeQuaternary(IIIVZincBlendeMixedAlloy):
 
     def __call__(self, **kwargs):
         '''
-        Used to specify the alloy composition.
+        
+        Args:
+            x: The x composition.
+            y: The y composition.
+            z: The z composition.
+            a: The lattice constant.
+
+        returns:
+            An instance of IIIVZincBlendeQuaternary with updated parameters.
         '''
         if self._has_x(kwargs) and self._has_y(kwargs):
             x = self._get_x(kwargs)

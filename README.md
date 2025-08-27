@@ -48,5 +48,16 @@ Parameters included in this version:
 - elastic constants
 - alloy bowing parameters
 - effects of biaxial strain
+- optical refractive index based on doi: 10.1088/0965-0393/4/4/002
 
 The [source code](http://github.com/scott-maddox/openbandparams) and [documentation](http://scott-maddox.github.io/openbandparams) are graciously hosted by GitHub.
+
+## Known issues
+
+1. The quaternary alloys interpolation scheme must be improved. If we use as a benchmark the GaInPAs quaternary, the current estimate for the bandgap energy for an InP lattice matched alloy with an As concentration of 0.53 is 1.06eV, when it is well known to be 1.00eV. The current implementation follows a weighted sum of terms, rather than a polynomial expansion. A good place to start is this: https://pubs.aip.org/aip/jap/article/136/21/215105/3324155/Interpolation-of-compound-semiconductor-alloy
+
+## Points to improve
+
+### Include III-V mobility values
+
+The package is built in such a way that the expansion to other material properties can be made seamlessly. Therefore, it would be quite advantageous to extend this package to include mobility values from https://pubs.aip.org/aip/jap/article/87/6/2890/489121/Empirical-low-field-mobility-model-for-III-V.
