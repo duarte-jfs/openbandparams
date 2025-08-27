@@ -36,9 +36,9 @@ descriptions = [p.description for n,p in sorted(params.items())]
 max_name_width = max([len(name) for name in names])
 max_desc_width = max([len(desc) for desc in descriptions])
 
-print '='*max_name_width+'   '+'='*max_desc_width
-print '{}   {}'.format(string.ljust('Parameter', max_name_width),'Description')
-print '='*max_name_width+'   '+'='*max_desc_width
+print('='*max_name_width+'   '+'='*max_desc_width)
+print('{}   {}'.format('Parameter'.ljust(max_name_width),'Description'.ljust(max_desc_width)))
+print('='*max_name_width+'   '+'='*max_desc_width)
 for name, desc in zip(names, descriptions):
-    print '{}   {}'.format(string.ljust(name, max_name_width),desc)
-print '='*max_name_width+'   '+'='*max_desc_width
+    print('{}   {}'.format(name.ljust(max_name_width),desc))
+print('='*max_name_width+'   '+'='*max_desc_width)

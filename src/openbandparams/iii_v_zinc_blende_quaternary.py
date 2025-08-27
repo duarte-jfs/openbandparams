@@ -22,6 +22,8 @@ __all__ = ['IIIVZincBlendeQuaternary']
 from .iii_v_zinc_blende_mixed_alloy import IIIVZincBlendeMixedAlloy
 from .algorithms import bisect
 
+from typing import overload
+
 class IIIVZincBlendeQuaternary(IIIVZincBlendeMixedAlloy):
     '''
     The base class for all III-V zinc blende quaternary alloys.
@@ -113,6 +115,39 @@ class IIIVZincBlendeQuaternary(IIIVZincBlendeMixedAlloy):
                 self.ternaries == other.ternaries,
                 self._parameters == other._parameters,
                 self._xyz == other._xyz)
+    
+    def __deepcopy__(self, memo):
+        from copy import deepcopy
+        cls = self.__class__
+        result = cls.__new__(cls)
+        memo[id(self)] = result
+
+        for attr in [
+            'name', 
+            'elements', 
+            '_parameters', 
+            '_aliases', 
+            '_xyz', 
+            'ternaries', 
+            '_type',
+            '_x',
+            '_y',
+            '_z',
+            ]:
+            setattr(result, attr, deepcopy(getattr(self, attr), memo))
+
+        type = getattr(self, '_type')
+        if type == 1:
+            for attr in ['_element_w', '_element_x', '_element_y', '_element_z']:
+                setattr(result, attr, deepcopy(getattr(self, attr), memo))
+        elif type == 2:
+            for attr in ['_element_x', '_element_y', '_element_z', '_element_w']:
+                setattr(result, attr, deepcopy(getattr(self, attr), memo))
+        elif type == 3:
+            for attr in ['_element_x', '_element_1mx', '_element_y', '_element_1my']:
+                setattr(result, attr, deepcopy(getattr(self, attr), memo))
+
+        return result
 
     def _parse_xyz(self, x, y, z):
         if self._type == 1 or self._type == 2:
@@ -151,6 +186,10 @@ class IIIVZincBlendeQuaternary(IIIVZincBlendeMixedAlloy):
         if (not (0. <= x <= 1.) or not (0. <= y <= 1.) or
             z is not None and not (0. <= z <= 1.)        ):
             raise ValueError('The alloy fractions must be between 0 and 1')
+        
+        self._x = x
+        self._y = y
+        self._z = z
         return x, y, z
     
     def _instance(self, x=None, y=None, z=None):
@@ -219,7 +258,15 @@ class IIIVZincBlendeQuaternary(IIIVZincBlendeMixedAlloy):
 
     def __call__(self, **kwargs):
         '''
-        Used to specify the alloy composition.
+        
+        Args:
+            x: The x composition.
+            y: The y composition.
+            z: The z composition.
+            a: The lattice constant.
+
+        returns:
+            An instance of IIIVZincBlendeQuaternary with updated parameters.
         '''
         if self._has_x(kwargs) and self._has_y(kwargs):
             x = self._get_x(kwargs)
@@ -413,9 +460,24 @@ class IIIVZincBlendeQuaternary(IIIVZincBlendeMixedAlloy):
     def _interpolate1or2(self, name, kwargs):
         x, y, z = self._xyz
 
-        u = (1. + x - y) / 2.
+        u = (1. - x + y) / 2.
         v = (1. + y - z) / 2.
         w = (1. + x - z) / 2.
+
+        from numpy import isclose
+        if isclose(abs(u), 0):
+            u = 0
+        if isclose(abs(v), 0):
+            v = 0
+        if isclose(abs(w), 0):
+            w = 0
+
+        if isclose(abs(u), 1):
+            u = 1
+        if isclose(abs(v), 1):
+            v = 1
+        if isclose(abs(w), 1):
+            w = 1
 
         t12 = self.ternaries[0](x=u)
         t13 = self.ternaries[1](x=w)
@@ -464,6 +526,9 @@ class IIIVZincBlendeQuaternary(IIIVZincBlendeMixedAlloy):
             return num / denom
 
     def _interpolate3(self, name, kwargs):
+        """
+        Implements eq15 of https://pubs.aip.org/aip/jap/article/101/1/013520/916821/Interpolation-of-quaternary-III-V-alloy-parameters
+        """
         x, y, _ = self._xyz
 
         # B1 = Q(0, 0) = BD = InSb

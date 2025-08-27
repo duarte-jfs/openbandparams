@@ -22,7 +22,7 @@ from .iii_v_zinc_blende_ternary import IIIVZincBlendeTernary
 from .iii_v_zinc_blende_binaries import (AlN, GaN, InN, AlP, GaP,
     InP, AlAs, GaAs, InAs, AlSb, GaSb, InSb)
 from .parameter import ValueParameter, FunctionParameter, MethodParameter
-from .references import lin_2002, vurgaftman_2001, klipstein_2014
+from .references import lin_2002, vurgaftman_2001, klipstein_2014, chuang_1995, taylor_tolstikhin_2000
 
 
 AlGaN = IIIVZincBlendeTernary(
@@ -124,9 +124,13 @@ GaInAs = IIIVZincBlendeTernary(
         ValueParameter('F_bowing', 1.77, 'dimensionless', references=[vurgaftman_2001]),
         ValueParameter('VBO_bowing', -0.38, 'eV', references=[vurgaftman_2001]),
         ValueParameter('a_c_bowing', 2.61, 'eV', references=[vurgaftman_2001]),
-        ValueParameter('meff_hh_100_bowing', -0.145, 'm_e', references=[vurgaftman_2001]),
-        ValueParameter('meff_lh_100_bowing', 0.0202, 'm_e', references=[vurgaftman_2001]),
-        ValueParameter('luttinger32_bowing', 0.481, 'm_e', references=[vurgaftman_2001]),
+        # ValueParameter('meff_hh_100_bowing', -0.145, 'm_e', references=[vurgaftman_2001]),
+        # ValueParameter('meff_lh_100_bowing', 0.0202, 'm_e', references=[vurgaftman_2001]),
+        # ValueParameter('luttinger32_bowing', 0.481, 'm_e', references=[vurgaftman_2001]),
+        ValueParameter('meff_hh_100_bowing', -0.502, 'm_e', references=[chuang_1995]), #This was chosen to match the mhh of InGaAs lattice matched to InP at 300K
+        ValueParameter('meff_lh_100_bowing', 0.024, 'm_e', references=[taylor_tolstikhin_2000]), #This was chosen to match the mlh of InGaAs lattice matched to InP at 300K
+        ValueParameter('luttinger32_bowing', 7.33, 'm_e', references=[taylor_tolstikhin_2000]), #This was chosen to match the gamma3 used in the reference for InGaAs lattice matched to InP at 300K
+
         #TODO: estimate F_bowing to get meff_e_Gamma_bowing = 0.0091
     ])
 

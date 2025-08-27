@@ -25,11 +25,11 @@ sys.path.insert(0,
 from openbandparams import *
 
 unstrained = GaInAs(In=0.3)
-print 'unstrained Eg', unstrained.Eg()
+print('unstrained Eg', unstrained.Eg())
 strained = unstrained.strained_001(GaAs)  # specify substrate
 # strained = unstrained.strained_001(0.02)  # specify out-of-plane strain
-print '  strained Eg', strained.Eg()
-print
+print('  strained Eg', strained.Eg())
+print()
 # Print a table of material parameters
 rows = []
 num_cols = 3
@@ -44,10 +44,10 @@ for parameter in ['CBO', 'VBO', 'Eg']:
     u = getattr(unstrained, parameter)()
     s = getattr(strained, parameter)()
     rows.append([parameter, '{:g}'.format(u), '{:g}'.format(s)])
-col_widths = [max([len(row[col]) for row in rows]) for col in xrange(num_cols)]
+col_widths = [max([len(row[col]) for row in rows]) for col in range(num_cols)]
 import string
 # print header
-print ' | '.join([string.ljust(rows[0][col],col_widths[col]) for col in xrange(num_cols)])
-print '-'*(sum(col_widths)+len(' | ')*(num_cols-1))
+print(' | '.join([str(rows[0][col]).ljust(col_widths[col]) for col in range(num_cols)]))
+print('-'*(sum(col_widths)+len(' | ')*(num_cols-1)))
 for row in rows[1:]:
-    print ' | '.join([string.ljust(row[col],col_widths[col]) for col in xrange(num_cols)])
+    print(' | '.join([str(row[col]).ljust(col_widths[col]) for col in range(num_cols)]))

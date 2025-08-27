@@ -243,3 +243,13 @@ class IIIVZincBlendeMixedAlloy(IIIVZincBlendeAlloy):
         Returns the thermal expansion coefficient.
         '''
         return self._interpolate('thermal_expansion', kwargs)
+    
+    @method_parameter(dependencies=['n_A'],
+                      units = 'dimensionless')
+    def n_A(self, **kwargs):
+        return self._interpolate('n_A', kwargs)
+    
+    @method_parameter(dependencies=['n_B'],
+                      units = 'dimensionless')
+    def n_B(self, **kwargs):
+        return self._interpolate('n_B', kwargs)

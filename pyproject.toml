@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "openbandparams"
+version = "0.9"  # Replace with the actual version from version.py
+description = "open source semiconductor band parameters"
+readme = "doc/PYPI_DESCRIPTION.rst"
+requires-python = ">=3.6"
+license = {text = "AGPLv3"}
+authors = [
+    {name = "Scott J. Maddox", email = "smaddox@utexas.edu"}
+]
+dependencies = [
+  "distro",
+  "numpy",
+  
+]
+
+[project.urls]
+Homepage = "http://scott-maddox.github.io/openbandparams"
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[tool.setuptools]
+packages = ["openbandparams", "openbandparams.tests", "openbandparams.examples"]
+package-dir = {"" = "src"}
+zip-safe = true

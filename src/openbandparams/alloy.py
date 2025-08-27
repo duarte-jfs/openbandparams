@@ -18,6 +18,7 @@
 #
 #############################################################################
 
+from distro import name
 from .parameter import Parameter, MethodParameter
 
 __all__ = ['Alloy']
@@ -51,8 +52,8 @@ class Alloy(object):
         try:
             item = super(Alloy, self).__getattribute__(name)
         except AttributeError as e:
-            msg = e.message.replace('object',
-                                    "object '{}'".format(self.name))
+            msg = str(e).replace('object',
+                                 "object '{}'".format(self.name))
             raise AttributeError(msg)
         if isinstance(item, MethodParameter):
             # make sure MethodParameters defined with the class
@@ -67,6 +68,17 @@ class Alloy(object):
 #     def __repr__(self):
 #         return self.name
     
+    def __deepcopy__(self, memo):
+        from copy import deepcopy
+        cls = self.__class__
+        result = cls.__new__(cls)
+        memo[id(self)] = result
+
+        for attr in ['name', 'elements', '_parameters', '_aliases']:
+            setattr(result, attr, deepcopy(getattr(self, attr), memo))
+
+        return result
+
     def latex(self):
         '''
         Returns a LaTeX representation of the alloy.
@@ -151,7 +163,7 @@ class Alloy(object):
         Returns a list of the unique parameters (no duplicates).
         '''
         # start with parameters in the `_parameters` dictionary
-        parameters = self._parameters.values()
+        parameters = list(self._parameters.values())
         # add parameters defined with the class
         for name in dir(self):
             item = getattr(self, name)

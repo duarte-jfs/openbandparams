@@ -25,6 +25,8 @@ sys.path.insert(0,
 from openbandparams import *
 
 # Print all references used to calculate a parameter
-parameter = InAsSb.Eg
+
+parameter = InAsSb(x=0).refractive_index
+# parameter = InAsSb(x=0).Eg
 for ref in parameter.get_references():
-    print ref
+    print(ref)

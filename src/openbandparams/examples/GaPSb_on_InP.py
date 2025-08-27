@@ -25,37 +25,37 @@ sys.path.insert(0,
 from openbandparams import *
 
 
-print 'Lattice matching GaPSb to InP (at the growth temperature of 470 C):'
+print('Lattice matching GaPSb to InP (at the growth temperature of 470 C):')
 Tg = 273.15 + 470
-print '>>> a_InP = InP.a(T=Tg)\n',
+print('>>> a_InP = InP.a(T=Tg)\n')
 a_InP = InP.a(T=Tg)
-print '>>> GaPSb_on_InP = GaPSb(a=a_InP, T=Tg)\n',
+print('>>> GaPSb_on_InP = GaPSb(a=a_InP, T=Tg)\n')
 GaPSb_on_InP = GaInAs(a=a_InP, T=Tg)
-print '>>> InP.a(T=Tg)\n', InP.a(T=Tg)
-print '>>> GaPSb_on_InP.a()\n', GaPSb_on_InP.a(T=Tg)
-print '>>> GaPSb_on_InP.element_fraction("Ga")\n', \
-    GaPSb_on_InP.element_fraction("Ga")
+print('>>> InP.a(T=Tg)\n', InP.a(T=Tg))
+print('>>> GaPSb_on_InP.a()\n', GaPSb_on_InP.a(T=Tg))
+print('>>> GaPSb_on_InP.element_fraction("Ga")\n', \
+    GaPSb_on_InP.element_fraction("Ga"))
 
-print '\nGet the properties at 70 C:'
+print('\nGet the properties at 70 C:')
 T = 273.15 + 70
 kT = 25.8e-3 / 300 * T
-print 'Eg_Gamma', GaPSb_on_InP.Eg_Gamma(T=T)
-print 'Eg_X', GaPSb_on_InP.Eg_X(T=T)
-print 'Eg_L', GaPSb_on_InP.Eg_L(T=T)
+print('Eg_Gamma', GaPSb_on_InP.Eg_Gamma(T=T))
+print('Eg_X', GaPSb_on_InP.Eg_X(T=T))
+print('Eg_L', GaPSb_on_InP.Eg_L(T=T))
 xg = GaPSb_on_InP.Eg_X(T=T) - GaPSb_on_InP.Eg_Gamma(T=T)
-print 'Eg_X - Eg_Gamma', xg
-print '(Eg_X - Eg_Gamma)/kT', xg / kT
+print('Eg_X - Eg_Gamma', xg)
+print('(Eg_X - Eg_Gamma)/kT', xg / kT)
 lg = GaPSb_on_InP.Eg_L(T=T) - GaPSb_on_InP.Eg_Gamma(T=T)
-print 'Eg_L - Eg_Gamma', lg
-print '(Eg_L - Eg_Gamma)/kT', lg / kT
+print('Eg_L - Eg_Gamma', lg)
+print('(Eg_L - Eg_Gamma)/kT', lg / kT)
 meff_e_Gamma = GaPSb_on_InP.meff_e_Gamma(T=T)
-print 'meff_e_Gamma', meff_e_Gamma
+print('meff_e_Gamma', meff_e_Gamma)
 meff_e_L_long = GaPSb_on_InP.meff_e_L_long(T=T)
-print 'meff_e_L_long', meff_e_L_long
+print('meff_e_L_long', meff_e_L_long)
 meff_e_L_trans = GaPSb_on_InP.meff_e_L_trans(T=T)
-print 'meff_e_L_trans', meff_e_L_trans
+print('meff_e_L_trans', meff_e_L_trans)
 meff_e_L_DOS = (GaPSb_on_InP.meff_e_L_long(T=T) ** (1. / 3) *
                 GaPSb_on_InP.meff_e_L_trans(T=T) ** (2. / 3))
-print 'meff_e_L_DOS', meff_e_L_DOS
+print('meff_e_L_DOS', meff_e_L_DOS)
 DOS_ratio = (meff_e_L_DOS) ** (3. / 2) / (meff_e_Gamma) ** (3. / 2)
-print 'meff_DOS_ratio', DOS_ratio
+print('meff_DOS_ratio', DOS_ratio)

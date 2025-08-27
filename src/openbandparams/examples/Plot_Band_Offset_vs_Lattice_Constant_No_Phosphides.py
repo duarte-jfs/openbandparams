@@ -56,8 +56,8 @@ for x, y, label in zip(x, y, label):
 # plot the ternaries
 indices = numpy.arange(100)
 fractions = numpy.linspace(0, 1, 100)
-x = numpy.empty(100, dtype=numpy.float)
-y = numpy.empty(100, dtype=numpy.float)
+x = numpy.empty(100, dtype=numpy.float32)
+y = numpy.empty(100, dtype=numpy.float32)
 for tern in [AlGaAs, AlInAs, GaInAs,
              AlGaSb, AlInSb, GaInSb,
              AlAsSb, GaAsSb, InAsSb]:
@@ -88,8 +88,8 @@ for x, y, label in zip(x, y, label):
 # plot the ternaries
 indices = numpy.arange(100)
 fractions = numpy.linspace(0, 1, 100)
-x = numpy.empty(100, dtype=numpy.float)
-y = numpy.empty(100, dtype=numpy.float)
+x = numpy.empty(100, dtype=numpy.float32)
+y = numpy.empty(100, dtype=numpy.float32)
 for tern in [AlGaAs, AlInAs, GaInAs,
              AlGaSb, AlInSb, GaInSb,
              AlAsSb, GaAsSb, InAsSb]:

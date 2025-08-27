@@ -20,6 +20,56 @@
 
 from .reference import BibtexReference
 
+chuang_1995 = BibtexReference('''
+    @book{chuang_physics_1995,
+	address = {New York},
+	series = {Wiley series in pure and applied optics},
+	title = {Physics of optoelectronic devices},
+	isbn = {978-0-471-10939-6},
+	publisher = {Wiley},
+	author = {Chuang, Shun Lien},
+	year = {1995},
+	keywords = {Electrooptical devices, Electrooptics, Semiconductors},
+	annote = {"A Wiley-Interscience publication."},
+}
+''')
+
+taylor_tolstikhin_2000 = BibtexReference('''
+    @article{taylor_intervalence_2000,
+	title = {Intervalence band absorption in {InP} and related materials for optoelectronic device modeling},
+	volume = {87},
+	issn = {0021-8979, 1089-7550},
+	url = {https://pubs.aip.org/jap/article/87/3/1054/489682/Intervalence-band-absorption-in-InP-and-related},
+	doi = {10.1063/1.371979},
+	abstract = {Intervalence band absorption spectra of InP and related materials over a range of temperatures are calculated using different k⋅p methods for band structure. It is shown that band structure models which neglect valence band intermixing effects, such as the Kane model, fail to provide any quantitative agreement with experiment. However, the Luttinger–Kohn model [Phys. Rev. 97, 869 (1955)] if properly fitted, does yield quantitatively accurate results for InP, GaAs, and InGaAs, in wide spectral and temperature ranges of interest for practical optoelectronic devices without adjusting the effective masses and split-off energy.},
+	language = {en},
+	number = {3},
+	urldate = {2024-08-12},
+	journal = {Journal of Applied Physics},
+	author = {Taylor, Jason and Tolstikhin, Valery},
+	month = feb,
+	year = {2000},
+	pages = {1054--1059},
+}
+''')
+
+guden_piprek_1996 = BibtexReference('''
+@article{guden_material_1996,
+	title = {Material parameters of quaternary {III} - {V} semiconductors for multilayer mirrors at wavelength},
+	volume = {4},
+	issn = {0965-0393, 1361-651X},
+	url = {https://iopscience.iop.org/article/10.1088/0965-0393/4/4/002},
+	doi = {10.1088/0965-0393/4/4/002},
+	number = {4},
+	urldate = {2024-08-15},
+	journal = {Modelling and Simulation in Materials Science and Engineering},
+	author = {Guden, M and Piprek, J},
+	month = jul,
+	year = {1996},
+	pages = {349--357}
+}
+
+''')
 
 vurgaftman_2001 = BibtexReference('''
 @article{vurgaftman_2001,
@@ -184,5 +234,38 @@ luttinger_1956 = BibtexReference('''
     volume = {102},
     number = {4},
     pages = {1030--1041}
+}
+''')
+
+LandoltBornstein2001 = BibtexReference('''
+@Misc{LandoltBornstein2001:sm_lbs_978-3-540-31355-7_55,
+    editor="Madelung, O.
+    and R{\"o}ssler, U.
+    and Schulz, M.",
+    title="Aluminum phosphide (AlP) dielectric constants: Datasheet from Landolt-B{\"o}rnstein - Group III Condensed Matter {\textperiodcentered} Volume 41A1$\alpha$: ``Group IV Elements, IV-IV and III-V Compounds. Part a - Lattice Properties'' in SpringerMaterials (https://doi.org/10.1007/10551045{\_}55)",
+    publisher="Springer-Verlag Berlin Heidelberg",
+    note="Copyright 2001 Springer-Verlag Berlin Heidelberg",
+    note="Part of SpringerMaterials",
+    note="accessed 2024-11-08",
+    doi="10.1007/10551045_55",
+    url="https://materials.springer.com/lb/docs/sm_lbs_978-3-540-31355-7_55",
+}
+''')
+
+materialsProject = BibtexReference('''
+@article{10.1063/1.4812323,
+    author = {Jain, Anubhav and Ong, Shyue Ping and Hautier, Geoffroy and Chen, Wei and Richards, William Davidson and Dacek, Stephen and Cholia, Shreyas and Gunter, Dan and Skinner, David and Ceder, Gerbrand and Persson, Kristin A.},
+    title = "{Commentary: The Materials Project: A materials genome approach to accelerating materials innovation}",
+    journal = {APL Materials},
+    volume = {1},
+    number = {1},
+    pages = {011002},
+    year = {2013},
+    month = {07},
+    abstract = "{Accelerating the discovery of advanced materials is essential for human welfare and sustainable, clean energy. In this paper, we introduce the Materials Project (www.materialsproject.org), a core program of the Materials Genome Initiative that uses high-throughput computing to uncover the properties of all known inorganic materials. This open dataset can be accessed through multiple channels for both interactive exploration and data mining. The Materials Project also seeks to create open-source platforms for developing robust, sophisticated materials analyses. Future efforts will enable users to perform ‘‘rapid-prototyping’’ of new materials in silico, and provide researchers with new avenues for cost-effective, data-driven materials design.}",
+    issn = {2166-532X},
+    doi = {10.1063/1.4812323},
+    url = {https://doi.org/10.1063/1.4812323},
+    eprint = {https://pubs.aip.org/aip/apm/article-pdf/doi/10.1063/1.4812323/13163869/011002\_1\_online.pdf},
 }
 ''')
