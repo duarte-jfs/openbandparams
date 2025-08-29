@@ -52,10 +52,6 @@ Parameters included in this version:
 
 The [source code](http://github.com/scott-maddox/openbandparams) and [documentation](http://scott-maddox.github.io/openbandparams) are graciously hosted by GitHub.
 
-## Known issues
-
-1. The quaternary alloys interpolation scheme must be improved. If we use as a benchmark the GaInPAs quaternary, the current estimate for the bandgap energy for an InP lattice matched alloy with an As concentration of 0.53 is 1.06eV, when it is well known to be 1.00eV. The current implementation follows a weighted sum of terms, rather than a polynomial expansion. A good place to start is this: https://pubs.aip.org/aip/jap/article/136/21/215105/3324155/Interpolation-of-compound-semiconductor-alloy
-
 ## Points to improve
 
 ### Include III-V mobility values
