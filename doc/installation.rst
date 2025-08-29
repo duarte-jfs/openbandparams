@@ -2,8 +2,7 @@ Installation
 ============
 
 In order to use `openbandparams`, you must having a working python_
-distribution installed. Python 3 support has not yet been tested,
-so Python 2.7 is suggested. Here are a couple different ways to
+distribution installed. As of version 1.0 Python 3 is now fully supported. Here are a couple different ways to
 install `openbandparams`:
 
 1. Download the latest release `.zip` or `.tar.gz` source package from
@@ -22,7 +21,7 @@ them, as well.
 Once you have `openbandparams` installed, check out the :doc:`tutorial` to
 get acquainted.
 
-.. _`github page`: http://github.com/scott-maddox/openbandparams/releases/latest
+.. _`github page`: https://github.com/duarte-jfs/openbandparams
 .. _python: https://www.python.org/download/
 .. _pypi: http://pypi.python.org/pypi
 .. _numpy: http://docs.scipy.org/doc/numpy/user/install.html

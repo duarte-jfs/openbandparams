@@ -456,81 +456,105 @@ class IIIVZincBlendeQuaternary(IIIVZincBlendeMixedAlloy):
             return self._interpolate3(name, kwargs)
         else:
             raise RuntimeError()
-
+        
     def _interpolate1or2(self, name, kwargs):
+        """
+        Implements equation 11 from [1]
+
+        [1] - Olesberg, J.T., 2024. Interpolation of compound semiconductor alloy parameters from those of their constituents. Journal of Applied Physics 136, 215105. https://doi.org/10.1063/5.0217016
+
+        """
         x, y, z = self._xyz
 
-        u = (1. - x + y) / 2.
-        v = (1. + y - z) / 2.
-        w = (1. + x - z) / 2.
+        if self._type == 1:
+            # Type 1: AB_{x}C_{y}D_{1-x-y}
+            # binaries = (AB, AC, AD)
+            # ternaries = (ABC, ABD ,ACD)
 
-        from numpy import isclose
-        if isclose(abs(u), 0):
-            u = 0
-        if isclose(abs(v), 0):
-            v = 0
-        if isclose(abs(w), 0):
-            w = 0
+            a = x
+            b = y
+            c = 1-x-y
+            p = 1
 
-        if isclose(abs(u), 1):
-            u = 1
-        if isclose(abs(v), 1):
-            v = 1
-        if isclose(abs(w), 1):
-            w = 1
+            b_AP = self.binaries[0].get_parameter(name)(**kwargs)
+            b_BP = self.binaries[1].get_parameter(name)(**kwargs)
+            b_CP = self.binaries[2].get_parameter(name)(**kwargs)
 
-        t12 = self.ternaries[0](x=u)
-        t13 = self.ternaries[1](x=w)
-        t23 = self.ternaries[2](x=v)
-        
-        p12 = t12.get_parameter(name)
-        if p12 is None:
-            raise AttributeError('"{}" is missing a required parameter: "{}".'
-                                 ''.format(t12.name, name))
-        p13 = t13.get_parameter(name)
-        if p13 is None:
-            raise AttributeError('"{}" is missing a required parameter: "{}".'
-                                 ''.format(t13.name, name))
-        p23 = t23.get_parameter(name)
-        if p23 is None:
-            raise AttributeError('"{}" is missing a required parameter: "{}".'
-                                 ''.format(t23.name, name))
-        
-        v12 = p12(**kwargs)
-        v13 = p13(**kwargs)
-        v23 = p23(**kwargs)
+            bow_ABP = self.ternaries[1](x=0)._get_bowing(name, kwargs)
+            bow_ACP = self.ternaries[2](x=0)._get_bowing(name, kwargs)
+            bow_BCP = self.ternaries[0](x=0)._get_bowing(name, kwargs)
+            bow_ABCP = self._get_bowing(name, kwargs)
 
-        # Calculate the weights, for use in the next step
-        weight12 = x * y
-        weight13 = x * z
-        weight23 = y * z
-        num = weight12 * v12 + weight13 * v13 + weight23 * v23
-        denom = weight12 + weight13 + weight23
-        # handle these cases explicitly, so there's no divide by zero
-        if denom == 0.:
-            if x == 0.:
-                return v23
-            else:
-                return v13
+            #In case the bow if None, put it to 0
+            if bow_ABP is None:
+                bow_ABP = 0
+            if bow_ACP is None:
+                bow_ACP = 0
+            if bow_BCP is None:
+                bow_BCP = 0
+            if bow_ABCP is None:
+                bow_ABCP = 0
 
-        # Check if there are bowing parameters provided
-        C = self._get_bowing(name, kwargs)
-        if C is not None:
-            # a bowing parameter exists - use it
-            # Note: this is an experimental mixing formula for
-            # adding additional quaternary-induced bowing
-            return num / denom - C * x * (1-x) * y * (1-y) * z * (1-z)
-        else:
-            # otherwise, use a weighted average of the ternary bowing
-            # parameters
-            return num / denom
+            return (
+                a*p*b_AP + 
+                b*p*b_BP +
+                c*p*b_CP -
+                a*b*p*bow_ABP -
+                a*c*p*bow_ACP -
+                b*c*p*bow_BCP -
+                a*b*c*p*bow_ABCP
+            )
+        elif self._type == 2:
+            # Type 2: A_{x}B_{y}C_{1-x-y}D
+            # binaries = (AD, BD, CD)
+            # ternaries = (ABD, ACD, BCD)
+
+            a = x
+            b = y
+            c = 1-x-y
+            p = 1
+
+            b_AP = self.binaries[0].get_parameter(name)(**kwargs)
+            b_BP = self.binaries[1].get_parameter(name)(**kwargs)
+            b_CP = self.binaries[2].get_parameter(name)(**kwargs)
+
+            bow_ABP = self.ternaries[0](x=0)._get_bowing(name, kwargs)
+            bow_ACP = self.ternaries[1](x=0)._get_bowing(name, kwargs)
+            bow_BCP = self.ternaries[2](x=0)._get_bowing(name, kwargs)
+            bow_ABCP = self._get_bowing(name, kwargs)
+
+            #In case the bow if None, put it to 0
+            if bow_ABP is None:
+                bow_ABP = 0
+            if bow_ACP is None:
+                bow_ACP = 0
+            if bow_BCP is None:
+                bow_BCP = 0
+            if bow_ABCP is None:
+                bow_ABCP = 0
+
+            return (
+                a*p*b_AP + 
+                b*p*b_BP +
+                c*p*b_CP -
+                a*b*p*bow_ABP -
+                a*c*p*bow_ACP -
+                b*c*p*bow_BCP -
+                a*b*c*p*bow_ABCP
+            )
 
     def _interpolate3(self, name, kwargs):
         """
-        Implements eq15 of https://pubs.aip.org/aip/jap/article/101/1/013520/916821/Interpolation-of-quaternary-III-V-alloy-parameters
+        Implements equation 10 from [1]
+
+        [1] - Olesberg, J.T., 2024. Interpolation of compound semiconductor alloy parameters from those of their constituents. Journal of Applied Physics 136, 215105. https://doi.org/10.1063/5.0217016
+
         """
         x, y, _ = self._xyz
 
+        # Type 3: A_{x}B_{1-x}C_{y}D_{1-y}
+        #binaries = (AC, AD, BC, BD)
+        #ternaries = (ABC, ABD, ACD, BCD)
         # B1 = Q(0, 0) = BD = InSb
         # B2 = Q(1, 0) = BC = InAs
         # B3 = Q(1, 1) = AC = AlAs
@@ -539,56 +563,43 @@ class IIIVZincBlendeQuaternary(IIIVZincBlendeMixedAlloy):
         # t23 = Q(1, y) = ACD = AlAsSb
         # t43 = Q(x, 1) = ABC = AlInAs
         # t14 = Q(0, y) = BCD = InAsSb
-        t43 = self.ternaries[0](x=x)
-        t12 = self.ternaries[1](x=x)
-        t23 = self.ternaries[2](x=y)
-        t14 = self.ternaries[3](x=y)
-        
-        p12 = t12.get_parameter(name)
-        if p12 is None:
-            raise AttributeError('"{}" is missing a required parameter: "{}".'
-                                 ''.format(t12.name, name))
-        p23 = t23.get_parameter(name)
-        if p23 is None:
-            raise AttributeError('"{}" is missing a required parameter: "{}".'
-                                 ''.format(t23.name, name))
-        p43 = t43.get_parameter(name)
-        if p43 is None:
-            raise AttributeError('"{}" is missing a required parameter: "{}".'
-                                 ''.format(t43.name, name))
-        p14 = t14.get_parameter(name)
-        if p14 is None:
-            raise AttributeError('"{}" is missing a required parameter: "{}".'
-                                 ''.format(t14.name, name))
-        
-        v12 = p12(**kwargs)
-        v23 = p23(**kwargs)
-        v43 = p43(**kwargs)
-        v14 = p14(**kwargs)
 
-        # handle these cases explicitly, so there's no divide by zero
-        if x == 0.:
-            return v14
-        elif x == 1.:
-            return v23
-        elif y == 0.:
-            return v12
-        elif y == 1.:
-            return v43
-        xinv = 1. - x
-        yinv = 1. - y
-        xweight = x * xinv
-        yweight = y * yinv
-        num = (xweight * (yinv * v12 + y * v43) + 
-               yweight * (xinv * v14 + x * v23))
-        denom = xweight + yweight
+        b_AP = self.binaries[0].get_parameter(name)(**kwargs)
+        b_BP = self.binaries[2].get_parameter(name)(**kwargs)
+        b_BQ = self.binaries[3].get_parameter(name)(**kwargs)
+        b_AQ = self.binaries[1].get_parameter(name)(**kwargs)
 
-        # Check if there are bowing parameters provided
-        C = self._get_bowing(name, kwargs)
-        if C is not None:
-            # a bowing parameter exists - use it
-            # Note: this is a new, experimental mixing formula for
-            # adding additional quaternary-induced bowing
-            return num / denom - C * xweight * yweight
-        else:
-            return num / denom
+        bow_ABP = self.ternaries[0](x=0)._get_bowing(name, kwargs)
+        bow_ABQ = self.ternaries[1](x=0)._get_bowing(name, kwargs)
+        bow_APQ = self.ternaries[2](x=0)._get_bowing(name, kwargs)
+        bow_BPQ = self.ternaries[3](x=0)._get_bowing(name, kwargs)
+        bow_ABPQ = self._get_bowing(name, kwargs)
+
+        #In case any of the bowing parameters is None, put it to 0
+        if bow_ABP is None:
+            bow_ABP = 0
+        if bow_ABQ is None:
+            bow_ABQ = 0
+        if bow_APQ is None:
+            bow_APQ = 0
+        if bow_BPQ is None:
+            bow_BPQ = 0
+        if bow_ABPQ is None:
+            bow_ABPQ = 0
+
+        a=x
+        b=1-x
+        p=y
+        q=1-y
+
+        return (
+            a*p*b_AP +
+            b*p*b_BP +
+            a*q*b_AQ +
+            b*q*b_BQ - 
+            a*b*p*bow_ABP -
+            a*b*q*bow_ABQ -
+            a*p*q*bow_APQ -
+            b*p*q*bow_BPQ -
+            a*b*p*q*bow_ABPQ
+        )
