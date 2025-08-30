@@ -24,4 +24,5 @@ Examples
     examples/_Plot_Bandgap_vs_Lattice_Constant_of_Quaternary3
     examples/_Plot_Valance_Band_Offset_vs_Lattice_Constant
     examples/_Plot_Conduction_Band_Offset_vs_Lattice_Constant
+    examples/_Plot_refractive_index_quaternaries_lattice_matched_inp
     examples/advanced
