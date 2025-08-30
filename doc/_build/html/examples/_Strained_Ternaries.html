@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Strained Ternaries &#8212; openbandparams 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinxdoc.css?v=34905f61" />
+    <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Quaternaries" href="_Quaternaries.html" />
+    <link rel="prev" title="Ternaries of Ternaries" href="_Ternaries_of_Ternaries.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="_Quaternaries.html" title="Quaternaries"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="_Ternaries_of_Ternaries.html" title="Ternaries of Ternaries"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">openbandparams 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../examples.html" accesskey="U">Examples</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Strained Ternaries</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="strained-ternaries">
+<h1>Strained Ternaries<a class="headerlink" href="#strained-ternaries" title="Link to this heading">¶</a></h1>
+<p>Source:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
+<span class="c1">#   Copyright (c) 2013-2014, Scott J Maddox</span>
+<span class="c1">#</span>
+<span class="c1">#   This file is part of openbandparams.</span>
+<span class="c1">#</span>
+<span class="c1">#   openbandparams is free software: you can redistribute it and/or modify</span>
+<span class="c1">#   it under the terms of the GNU Affero General Public License as published</span>
+<span class="c1">#   by the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c1">#   (at your option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1">#   openbandparams is distributed in the hope that it will be useful,</span>
+<span class="c1">#   but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1">#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c1">#   GNU Affero General Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1">#   You should have received a copy of the GNU Affero General Public License</span>
+<span class="c1">#   along with openbandparams.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="c1">#</span>
+<span class="c1">#############################################################################</span>
+<span class="c1"># Make sure we import the local openbandparams version</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s1">&#39;../..&#39;</span><span class="p">)))</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">openbandparams</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">unstrained</span> <span class="o">=</span> <span class="n">GaInAs</span><span class="p">(</span><span class="n">In</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;unstrained Eg&#39;</span><span class="p">,</span> <span class="n">unstrained</span><span class="o">.</span><span class="n">Eg</span><span class="p">())</span>
+<span class="n">strained</span> <span class="o">=</span> <span class="n">unstrained</span><span class="o">.</span><span class="n">strained_001</span><span class="p">(</span><span class="n">GaAs</span><span class="p">)</span>  <span class="c1"># specify substrate</span>
+<span class="c1"># strained = unstrained.strained_001(0.02)  # specify out-of-plane strain</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  strained Eg&#39;</span><span class="p">,</span> <span class="n">strained</span><span class="o">.</span><span class="n">Eg</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="c1"># Print a table of material parameters</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">num_cols</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s1">&#39;Parameter&#39;</span><span class="p">,</span> <span class="s1">&#39;Unstrained&#39;</span><span class="p">,</span> <span class="s1">&#39;Strained&#39;</span><span class="p">])</span>
+<span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s1">&#39;latex&#39;</span><span class="p">,</span> <span class="n">unstrained</span><span class="o">.</span><span class="n">latex</span><span class="p">(),</span> <span class="n">strained</span><span class="o">.</span><span class="n">latex</span><span class="p">()])</span>
+<span class="k">for</span> <span class="n">parameter</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;strain_out_of_plane&#39;</span><span class="p">,</span> <span class="s1">&#39;strain_in_plane&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;CBO_strain_shift&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;VBO_hh_strain_shift&#39;</span><span class="p">,</span> <span class="s1">&#39;VBO_lh_strain_shift&#39;</span><span class="p">]:</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">strained</span><span class="p">,</span> <span class="n">parameter</span><span class="p">)()</span>
+    <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">parameter</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{:g}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">s</span><span class="p">)])</span>
+<span class="k">for</span> <span class="n">parameter</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;CBO&#39;</span><span class="p">,</span> <span class="s1">&#39;VBO&#39;</span><span class="p">,</span> <span class="s1">&#39;Eg&#39;</span><span class="p">]:</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">unstrained</span><span class="p">,</span> <span class="n">parameter</span><span class="p">)()</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">strained</span><span class="p">,</span> <span class="n">parameter</span><span class="p">)()</span>
+    <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">parameter</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{:g}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="s1">&#39;</span><span class="si">{:g}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">s</span><span class="p">)])</span>
+<span class="n">col_widths</span> <span class="o">=</span> <span class="p">[</span><span class="nb">max</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="n">col</span><span class="p">])</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">])</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_cols</span><span class="p">)]</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">string</span>
+<span class="c1"># print header</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39; | &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">rows</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">col</span><span class="p">])</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="n">col_widths</span><span class="p">[</span><span class="n">col</span><span class="p">])</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_cols</span><span class="p">)]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">col_widths</span><span class="p">)</span><span class="o">+</span><span class="nb">len</span><span class="p">(</span><span class="s1">&#39; | &#39;</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">num_cols</span><span class="o">-</span><span class="mi">1</span><span class="p">)))</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39; | &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="n">col</span><span class="p">])</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="n">col_widths</span><span class="p">[</span><span class="n">col</span><span class="p">])</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_cols</span><span class="p">)]))</span>
+</pre></div>
+</div>
+<p>Result:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">unstrained</span> <span class="n">Eg</span> <span class="mf">1.0017056679389311</span>
+  <span class="n">strained</span> <span class="n">Eg</span> <span class="mf">1.1026451850964678</span>
+
+<span class="n">Parameter</span>           <span class="o">|</span> <span class="n">Unstrained</span>         <span class="o">|</span> <span class="n">Strained</span>                    
+<span class="o">-----------------------------------------------------------------------</span>
+<span class="n">latex</span>               <span class="o">|</span> <span class="n">Ga_</span><span class="p">{</span><span class="mf">0.7</span><span class="p">}</span><span class="n">In_</span><span class="p">{</span><span class="mf">0.3</span><span class="p">}</span><span class="n">As</span> <span class="o">|</span> <span class="n">Ga_</span><span class="p">{</span><span class="mf">0.7</span><span class="p">}</span><span class="n">In_</span><span class="p">{</span><span class="mf">0.3</span><span class="p">}</span><span class="n">As</span><span class="o">/</span><span class="n">GaAs</span><span class="p">(</span><span class="mi">001</span><span class="p">)</span>
+<span class="n">strain_out_of_plane</span> <span class="o">|</span>                    <span class="o">|</span> <span class="mf">0.0207045</span>                   
+<span class="n">strain_in_plane</span>     <span class="o">|</span>                    <span class="o">|</span> <span class="o">-</span><span class="mf">0.0214947</span>                  
+<span class="n">CBO_strain_shift</span>    <span class="o">|</span>                    <span class="o">|</span> <span class="mf">0.158025</span>                    
+<span class="n">VBO_hh_strain_shift</span> <span class="o">|</span>                    <span class="o">|</span> <span class="mf">0.0570855</span>                   
+<span class="n">VBO_lh_strain_shift</span> <span class="o">|</span>                    <span class="o">|</span> <span class="o">-</span><span class="mf">0.106647</span>                   
+<span class="n">CBO</span>                 <span class="o">|</span> <span class="mf">0.344506</span>           <span class="o">|</span> <span class="mf">0.502531</span>                    
+<span class="n">VBO</span>                 <span class="o">|</span> <span class="o">-</span><span class="mf">0.6572</span>            <span class="o">|</span> <span class="o">-</span><span class="mf">0.600115</span>                   
+<span class="n">Eg</span>                  <span class="o">|</span> <span class="mf">1.00171</span>            <span class="o">|</span> <span class="mf">1.10265</span>                     
+</pre></div>
+</div>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="_Ternaries_of_Ternaries.html"
+                          title="previous chapter">Ternaries of Ternaries</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="_Quaternaries.html"
+                          title="next chapter">Quaternaries</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/examples/_Strained_Ternaries.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="_Quaternaries.html" title="Quaternaries"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="_Ternaries_of_Ternaries.html" title="Ternaries of Ternaries"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">openbandparams 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../examples.html" >Examples</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Strained Ternaries</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2013-2015, Scott J Maddox.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    </div>
+  </body>
+</html>

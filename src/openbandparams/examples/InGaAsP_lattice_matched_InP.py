@@ -1,6 +1,7 @@
 import openbandparams as obp
 import numpy as np
 from matplotlib import pyplot as plt
+import sys
 
 x=np.linspace(0,1,100)
 
@@ -11,9 +12,18 @@ for xi in x:
     mat = obp.GaInPAs(As = xi, a=obp.InP.a())
     Eg_obp.append(mat.Eg())
 
-plt.plot(x, Eg, label='Analytical')
-plt.plot(x, Eg_obp, label='OpenBandParams')
-plt.xlabel('As Composition')
-plt.ylabel('Bandgap Energy (eV)')
-plt.legend()
-plt.show()
+fig = plt.figure()
+ax = fig.add_subplot(111)
+ax.plot(x, Eg, label='Analytical')
+ax.plot(x, Eg_obp, label='OpenBandParams')
+ax.set_xlabel('As Composition')
+ax.set_ylabel('Bandgap Energy (eV)')
+ax.legend()
+
+if __name__ == '__main__':
+    import sys
+    if len(sys.argv) > 1:
+        output_filename = sys.argv[1]
+        plt.savefig(output_filename)
+    else:
+        plt.show()

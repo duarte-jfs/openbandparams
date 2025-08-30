@@ -1,0 +1,26 @@
+============================   ============================================================================================================
+Parameter                      Description                                                                                                 
+============================   ============================================================================================================
+CBO                            conduction band offset energy relative to InSb VBO
+CBO_Gamma                      Gamma-valley conduction band offset energy relative to InSb VBO
+CBO_L                          L-valley conduction band offset energy relative to InSb VBO
+CBO_X                          X-valley conduction band offset energy relative to InSb VBO
+CBO_hydrostatic_strain_shift   shift in the conduction band offset energy due to the hydrostatic strain component
+CBO_strain_shift               total shift in the conduction band offset energy due to strain
+Eg                             bandgap energy
+Eg_hh                          bandgap energy between the conduction band and the heavy-hole band
+Eg_lh                          bandgap energy between the conduction band and the light-hole band
+Eg_strain_shift                total shift in the bandgap energy due to strain
+VBO                            valance band offset energy relative to InSb VBO
+VBO_hh                         heavy-hole valance band offset energy
+VBO_hh_strain_shift            total shift in the heavy-hole valance band offset energy due to strain
+VBO_hydrostatic_strain_shift   shift in the valance band offset energy due to the hydrostatic strain component
+VBO_lh                         light-hole valance band offset energy
+VBO_lh_strain_shift            total shift in the light-hole valance band offset energy due to strain
+VBO_strain_shift               total shift in the valance band offset energy due to strain
+VBO_uniaxial_strain_shift      shift in the valance band offset energy due to the uniaxial strain component
+electron_affinity              electron affinity energy
+strain_in_plane                strain in the in-plane directions
+strain_out_of_plane            strain in the out-of-plane direction (the strain measured by X-ray diffraction symmetric omega-2theta scans)
+substrate_a                    substrate lattice parameter
+============================   ============================================================================================================

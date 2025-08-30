@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>openbandparams.parameter &#8212; openbandparams 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinxdoc.css?v=34905f61" />
+    <script src="../../_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">openbandparams 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">openbandparams.parameter</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for openbandparams.parameter</h1><div class="highlight"><pre>
+<span></span><span class="c1">#</span>
+<span class="c1">#   Copyright (c) 2013-2015, Scott J Maddox</span>
+<span class="c1">#</span>
+<span class="c1">#   This file is part of openbandparams.</span>
+<span class="c1">#</span>
+<span class="c1">#   openbandparams is free software: you can redistribute it and/or modify</span>
+<span class="c1">#   it under the terms of the GNU Affero General Public License as published</span>
+<span class="c1">#   by the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c1">#   (at your option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1">#   openbandparams is distributed in the hope that it will be useful,</span>
+<span class="c1">#   but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1">#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c1">#   GNU Affero General Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1">#   You should have received a copy of the GNU Affero General Public License</span>
+<span class="c1">#   along with openbandparams.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="c1">#</span>
+<span class="c1">#############################################################################</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Parameter&#39;</span><span class="p">,</span> <span class="s1">&#39;ValueParameter&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;FunctionParameter&#39;</span><span class="p">,</span> <span class="s1">&#39;method_parameter&#39;</span><span class="p">]</span>
+
+
+<div class="viewcode-block" id="Parameter">
+<a class="viewcode-back" href="../../apidoc/openbandparams.html#openbandparams.iii_v_alloy.Parameter">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Parameter</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">units</span><span class="p">,</span> <span class="n">aliases</span><span class="o">=</span><span class="p">[],</span> <span class="n">references</span><span class="o">=</span><span class="p">[]):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        name : string</span>
+<span class="sd">            name of the parameter</span>
+<span class="sd">        units : string</span>
+<span class="sd">            units</span>
+<span class="sd">        aliases : list of strings (default=[])</span>
+<span class="sd">            list of alternate names</span>
+<span class="sd">        references : list of Reference objects (default=[])</span>
+<span class="sd">            literature references</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">descriptions</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">units</span> <span class="o">=</span> <span class="n">units</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">aliases</span> <span class="o">=</span> <span class="n">aliases</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_references</span> <span class="o">=</span> <span class="n">references</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Parameter.get_references">
+<a class="viewcode-back" href="../../apidoc/openbandparams.html#openbandparams.iii_v_alloy.Parameter.get_references">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_references</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_references</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="ValueParameter">
+<a class="viewcode-back" href="../../apidoc/openbandparams.html#openbandparams.iii_v_alloy.ValueParameter">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ValueParameter</span><span class="p">(</span><span class="n">Parameter</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">units</span><span class="p">,</span>
+                 <span class="n">aliases</span><span class="o">=</span><span class="p">[],</span> <span class="n">references</span><span class="o">=</span><span class="p">[]):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        name : string</span>
+<span class="sd">            name of the parameter</span>
+<span class="sd">        value : object</span>
+<span class="sd">            value of the parameter</span>
+<span class="sd">        units : string</span>
+<span class="sd">            units</span>
+<span class="sd">        aliases : list of strings (default=[])</span>
+<span class="sd">            list of alternate names</span>
+<span class="sd">        references : list of Reference objects (default=[])</span>
+<span class="sd">            literature references</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ValueParameter</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+                                             <span class="n">units</span><span class="o">=</span><span class="n">units</span><span class="p">,</span>
+                                             <span class="n">aliases</span><span class="o">=</span><span class="n">aliases</span><span class="p">,</span>
+                                             <span class="n">references</span><span class="o">=</span><span class="n">references</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span></div>
+
+
+
+<div class="viewcode-block" id="FunctionParameter">
+<a class="viewcode-back" href="../../apidoc/openbandparams.html#openbandparams.iii_v_alloy.FunctionParameter">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">FunctionParameter</span><span class="p">(</span><span class="n">Parameter</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">function</span><span class="p">,</span> <span class="n">units</span><span class="p">,</span>
+                 <span class="n">aliases</span><span class="o">=</span><span class="p">[],</span> <span class="n">references</span><span class="o">=</span><span class="p">[]):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        name : string</span>
+<span class="sd">            name of the parameter</span>
+<span class="sd">        function : callable function</span>
+<span class="sd">            function that returns the value of the parameter</span>
+<span class="sd">        units : string</span>
+<span class="sd">            units</span>
+<span class="sd">        aliases : list of strings (default=[])</span>
+<span class="sd">            list of alternate names</span>
+<span class="sd">        references : list of Reference objects (default=[])</span>
+<span class="sd">            literature references</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">FunctionParameter</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+                                                <span class="n">units</span><span class="o">=</span><span class="n">units</span><span class="p">,</span>
+                                                <span class="n">aliases</span><span class="o">=</span><span class="n">aliases</span><span class="p">,</span>
+                                                <span class="n">references</span><span class="o">=</span><span class="n">references</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">function</span> <span class="o">=</span> <span class="n">function</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MethodParameter</span><span class="p">(</span><span class="n">Parameter</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">dependencies</span><span class="p">,</span> <span class="n">units</span><span class="p">,</span>
+                 <span class="n">aliases</span><span class="o">=</span><span class="p">[],</span> <span class="n">references</span><span class="o">=</span><span class="p">[]):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        name : string</span>
+<span class="sd">            name of the parameter</span>
+<span class="sd">        method : callable method (default=None)</span>
+<span class="sd">            method that accepts the alloy object as the first parameter, and</span>
+<span class="sd">            returns the value of the parameter</span>
+<span class="sd">        dependencies : list of strings (default=None)</span>
+<span class="sd">            list of parameter names that this parameter depends on</span>
+<span class="sd">        units : string</span>
+<span class="sd">            units</span>
+<span class="sd">        aliases : list of strings (default=[])</span>
+<span class="sd">            list of alternate names</span>
+<span class="sd">        references : list of Reference objects (default=[])</span>
+<span class="sd">            literature references</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">MethodParameter</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+                                              <span class="n">units</span><span class="o">=</span><span class="n">units</span><span class="p">,</span>
+                                              <span class="n">aliases</span><span class="o">=</span><span class="n">aliases</span><span class="p">,</span>
+                                              <span class="n">references</span><span class="o">=</span><span class="n">references</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">alloy</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">=</span> <span class="n">method</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dependencies</span> <span class="o">=</span> <span class="n">dependencies</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">bind</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">alloy</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Shallow copies this MethodParameter, and binds it to an alloy.</span>
+<span class="sd">        This is required before calling.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">param</span> <span class="o">=</span> <span class="n">MethodParameter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dependencies</span><span class="p">,</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">units</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">aliases</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_references</span><span class="p">)</span>
+        <span class="n">param</span><span class="o">.</span><span class="n">alloy</span> <span class="o">=</span> <span class="n">alloy</span>
+        <span class="k">return</span> <span class="n">param</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">alloy</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;MethodParameter must be bound to an Alloy&#39;</span>
+                            <span class="s1">&#39; with `bind` before calling.&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alloy</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_references</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">alloy</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_references</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="p">]</span>
+            <span class="n">refs</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">refs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_references</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dependencies</span><span class="p">:</span>
+                <span class="n">p</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">alloy</span><span class="o">.</span><span class="n">get_parameter</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">p</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">p</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
+                    <span class="n">params</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">ref</span> <span class="ow">in</span> <span class="n">p</span><span class="o">.</span><span class="n">_references</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">ref</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">refs</span><span class="p">:</span>
+                            <span class="n">refs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ref</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alloy</span><span class="p">,</span> <span class="s1">&#39;binaries&#39;</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">alloy</span> <span class="ow">in</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alloy</span><span class="p">,</span> <span class="s1">&#39;binaries&#39;</span><span class="p">):</span>
+                    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dependencies</span><span class="p">:</span>
+                        <span class="n">p</span> <span class="o">=</span> <span class="n">alloy</span><span class="o">.</span><span class="n">get_parameter</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">p</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">p</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
+                            <span class="n">params</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+                            <span class="k">for</span> <span class="n">ref</span> <span class="ow">in</span> <span class="n">p</span><span class="o">.</span><span class="n">get_references</span><span class="p">():</span>
+                                <span class="k">if</span> <span class="n">ref</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">refs</span><span class="p">:</span>
+                                    <span class="n">refs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ref</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alloy</span><span class="p">,</span> <span class="s1">&#39;ternaries&#39;</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">alloy</span> <span class="ow">in</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alloy</span><span class="p">,</span> <span class="s1">&#39;ternaries&#39;</span><span class="p">):</span>
+                    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dependencies</span><span class="p">:</span>
+                        <span class="n">p</span> <span class="o">=</span> <span class="n">alloy</span><span class="o">.</span><span class="n">get_parameter</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+                        <span class="n">params</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">p</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">p</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
+                            <span class="k">for</span> <span class="n">ref</span> <span class="ow">in</span> <span class="n">p</span><span class="o">.</span><span class="n">get_references</span><span class="p">():</span>
+                                <span class="k">if</span> <span class="n">ref</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">refs</span><span class="p">:</span>
+                                    <span class="n">refs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ref</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">refs</span>
+
+
+<div class="viewcode-block" id="method_parameter">
+<a class="viewcode-back" href="../../apidoc/openbandparams.html#openbandparams.iii_v_alloy.method_parameter">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">method_parameter</span><span class="p">(</span><span class="n">dependencies</span><span class="p">,</span> <span class="n">units</span><span class="p">,</span>
+                     <span class="n">aliases</span><span class="o">=</span><span class="p">[],</span> <span class="n">references</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">decorator</span><span class="p">(</span><span class="n">method</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Instead of returning a function like most decorators, this returns</span>
+<span class="sd">        a MethodParameter, which AlloyType moves to the `class_parameters`</span>
+<span class="sd">        dictionary. At instantiation, the `class_parameters` are added</span>
+<span class="sd">        to the `parameters` dictionary, unless a `Parameter` with the same</span>
+<span class="sd">        name has already been added.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">method</span><span class="o">.</span><span class="vm">__name__</span>
+        <span class="k">return</span> <span class="n">MethodParameter</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">dependencies</span><span class="p">,</span> <span class="n">units</span><span class="p">,</span>
+                               <span class="n">aliases</span><span class="p">,</span> <span class="n">references</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">decorator</span></div>
+
+
+<span class="n">descriptions</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;CBO&#39;</span> <span class="p">:</span> <span class="s1">&#39;conduction band offset energy relative to InSb VBO&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;CBO_Gamma&#39;</span> <span class="p">:</span> <span class="s1">&#39;Gamma-valley conduction band offset energy relative to InSb VBO&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;CBO_L&#39;</span> <span class="p">:</span> <span class="s1">&#39;L-valley conduction band offset energy relative to InSb VBO&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;CBO_X&#39;</span> <span class="p">:</span> <span class="s1">&#39;X-valley conduction band offset energy relative to InSb VBO&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Delta_SO&#39;</span> <span class="p">:</span> <span class="s1">&#39;split-off energy&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Eg&#39;</span> <span class="p">:</span> <span class="s1">&#39;bandgap energy&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Eg_Gamma&#39;</span> <span class="p">:</span> <span class="s1">&#39;Gamma-valley bandgap energy&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Eg_Gamma_0&#39;</span> <span class="p">:</span> <span class="s1">&#39;Gamma-valley bandgap energy at 0 K&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Eg_L&#39;</span> <span class="p">:</span> <span class="s1">&#39;L-valley bandgap energy&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Eg_L_0&#39;</span> <span class="p">:</span> <span class="s1">&#39;L-valley bandgap energy at 0 K&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Eg_X&#39;</span> <span class="p">:</span> <span class="s1">&#39;X-valley bandgap energy&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Eg_X_0&#39;</span> <span class="p">:</span> <span class="s1">&#39;X-valley bandgap energy at 0 K&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Ep&#39;</span> <span class="p">:</span> <span class="s1">&#39;Ep interband matrix element&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;F&#39;</span> <span class="p">:</span> <span class="s1">&#39;F Kane remote-band parameter&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;VBO&#39;</span> <span class="p">:</span> <span class="s1">&#39;valance band offset energy relative to InSb VBO&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;a&#39;</span> <span class="p">:</span> <span class="s1">&#39;lattice parameter&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;a_300K&#39;</span> <span class="p">:</span> <span class="s1">&#39;lattice parameter at 300 K&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;a_c&#39;</span> <span class="p">:</span> <span class="s1">&#39;conduction band deformation potential&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;a_v&#39;</span> <span class="p">:</span> <span class="s1">&#39;valance band deformation potential&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;alpha_Gamma&#39;</span> <span class="p">:</span> <span class="s1">&#39;Gamma-valley Varshni alpha parameter&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;alpha_L&#39;</span> <span class="p">:</span> <span class="s1">&#39;L-valley Varshni alpha parameter&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;alpha_X&#39;</span> <span class="p">:</span> <span class="s1">&#39;X-valley Varshni alpha parameter&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;b&#39;</span> <span class="p">:</span> <span class="s1">&#39;b shear deformation potential&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;beta_Gamma&#39;</span> <span class="p">:</span> <span class="s1">&#39;Gamma-valley Varshni beta parameter&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;beta_L&#39;</span> <span class="p">:</span> <span class="s1">&#39;L-valley Varshni beta parameter&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;beta_X&#39;</span> <span class="p">:</span> <span class="s1">&#39;X-valley Varshni beta parameter&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;c11&#39;</span> <span class="p">:</span> <span class="s1">&#39;c11 elastic constant&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;c12&#39;</span> <span class="p">:</span> <span class="s1">&#39;c12 elastic constant&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;c44&#39;</span> <span class="p">:</span> <span class="s1">&#39;c44 elastic constant&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;d&#39;</span> <span class="p">:</span> <span class="s1">&#39;d shear deformation potential&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;dielectric&#39;</span> <span class="p">:</span> <span class="s1">&#39;static relative dielectric permittivity (i.e. &lt;~ 1 THz)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;dielectric_high_frequency&#39;</span> <span class="p">:</span> <span class="s1">&#39;high-frequency dielectric permittivity &#39;</span>
+                                  <span class="s1">&#39;(i.e. &gt;~ 100 THz)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;electron_affinity&#39;</span> <span class="p">:</span> <span class="s1">&#39;electron affinity energy&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;luttinger1&#39;</span> <span class="p">:</span> <span class="s1">&#39;first Luttinger parameter&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;luttinger2&#39;</span> <span class="p">:</span> <span class="s1">&#39;second Luttinger parameter&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;luttinger3&#39;</span> <span class="p">:</span> <span class="s1">&#39;third Luttinger parameter&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;luttinger32&#39;</span> <span class="p">:</span> <span class="s1">&#39;difference between third and second Luttinger parameters &#39;</span>
+                    <span class="s1">&#39;(luttinger3 - luttinger2)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;meff_SO&#39;</span> <span class="p">:</span> <span class="s1">&#39;split-off band effective mass&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;meff_so&#39;</span> <span class="p">:</span> <span class="s1">&#39;split-off band effective mass from the literature&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;meff_SO_0&#39;</span> <span class="p">:</span> <span class="s1">&#39;split-off band effective mass at 0 K&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;meff_e_Gamma&#39;</span> <span class="p">:</span> <span class="s1">&#39;electron effective mass in the Gamma-valley&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;meff_e_Gamma_0&#39;</span> <span class="p">:</span> <span class="s1">&#39;electron effective mass in the Gamma-valley at 0 K&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;meff_e_L_DOS&#39;</span> <span class="p">:</span> <span class="s1">&#39;electron effective mass density of states in the L-valley&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;meff_e_L_long&#39;</span> <span class="p">:</span> <span class="s1">&#39;electron effective mass in the longitudinal direction in the L-valley&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;meff_e_L_trans&#39;</span> <span class="p">:</span> <span class="s1">&#39;electron effective mass in the transverse direction in the L-valley&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;meff_e_X_DOS&#39;</span> <span class="p">:</span> <span class="s1">&#39;electron effective mass density of states in the X-valley&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;meff_e_X_long&#39;</span> <span class="p">:</span> <span class="s1">&#39;electron effective mass in the longitudinal direction in the X-valley&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;meff_e_X_trans&#39;</span> <span class="p">:</span> <span class="s1">&#39;electron effective mass in the transverse direction in the X-valley&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;meff_hh_100&#39;</span> <span class="p">:</span> <span class="s1">&#39;heavy-hole effective mass in the &lt;100&gt; direction&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;meff_hh_110&#39;</span> <span class="p">:</span> <span class="s1">&#39;heavy-hole effective mass in the &lt;110&gt; direction&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;meff_hh_111&#39;</span> <span class="p">:</span> <span class="s1">&#39;heavy-hole effective mass in the &lt;111&gt; direction&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;meff_lh_100&#39;</span> <span class="p">:</span> <span class="s1">&#39;light-hole effective mass in the &lt;100&gt; direction&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;meff_lh_110&#39;</span> <span class="p">:</span> <span class="s1">&#39;light-hole effective mass in the &lt;110&gt; direction&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;meff_lh_111&#39;</span> <span class="p">:</span> <span class="s1">&#39;light-hole effective mass in the &lt;111&gt; direction&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;nonparabolicity&#39;</span> <span class="p">:</span> <span class="s1">&#39;Kane band nonparabolicity parameter for the Gamma-valley&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;thermal_expansion&#39;</span> <span class="p">:</span> <span class="s1">&#39;lattice parameter thermal expansion coefficient&#39;</span><span class="p">,</span>
+    <span class="c1"># strained</span>
+    <span class="s1">&#39;CBO_hydrostatic_strain_shift&#39;</span> <span class="p">:</span> <span class="s1">&#39;shift in the conduction band offset &#39;</span>
+                                     <span class="s1">&#39;energy due to the hydrostatic strain &#39;</span>
+                                     <span class="s1">&#39;component&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;CBO_strain_shift&#39;</span> <span class="p">:</span> <span class="s1">&#39;total shift in the conduction band offset energy due to strain&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Eg_hh&#39;</span> <span class="p">:</span> <span class="s1">&#39;bandgap energy between the conduction band and the heavy-hole band&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Eg_lh&#39;</span> <span class="p">:</span> <span class="s1">&#39;bandgap energy between the conduction band and the light-hole band&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Eg_strain_shift&#39;</span> <span class="p">:</span> <span class="s1">&#39;total shift in the bandgap energy due to strain&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;VBO_hh&#39;</span> <span class="p">:</span> <span class="s1">&#39;heavy-hole valance band offset energy&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;VBO_lh&#39;</span> <span class="p">:</span> <span class="s1">&#39;light-hole valance band offset energy&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;VBO_hh_strain_shift&#39;</span> <span class="p">:</span> <span class="s1">&#39;total shift in the heavy-hole valance band offset &#39;</span>
+                            <span class="s1">&#39;energy due to strain&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;VBO_lh_strain_shift&#39;</span> <span class="p">:</span> <span class="s1">&#39;total shift in the light-hole valance band offset &#39;</span>
+                            <span class="s1">&#39;energy due to strain&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;VBO_strain_shift&#39;</span> <span class="p">:</span> <span class="s1">&#39;total shift in the valance band offset energy due to strain&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;VBO_hydrostatic_strain_shift&#39;</span> <span class="p">:</span> <span class="s1">&#39;shift in the valance band offset &#39;</span>
+                                     <span class="s1">&#39;energy due to the hydrostatic strain &#39;</span>
+                                     <span class="s1">&#39;component&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;VBO_uniaxial_strain_shift&#39;</span> <span class="p">:</span> <span class="s1">&#39;shift in the valance band offset &#39;</span>
+                                  <span class="s1">&#39;energy due to the uniaxial strain &#39;</span>
+                                  <span class="s1">&#39;component&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;substrate_a&#39;</span> <span class="p">:</span> <span class="s1">&#39;substrate lattice parameter&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;strain_in_plane&#39;</span> <span class="p">:</span> <span class="s1">&#39;strain in the in-plane directions&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;strain_out_of_plane&#39;</span> <span class="p">:</span> <span class="s1">&#39;strain in the out-of-plane direction &#39;</span>
+                            <span class="s1">&#39;(the strain measured by X-ray diffraction &#39;</span>
+                            <span class="s1">&#39;symmetric omega-2theta scans)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;n_A&#39;</span><span class="p">:</span> <span class="s1">&#39;refractive index constant A&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;n_B&#39;</span><span class="p">:</span> <span class="s1">&#39;refractive index constant B&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">openbandparams 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">openbandparams.parameter</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2013-2015, Scott J Maddox.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    </div>
+  </body>
+</html>

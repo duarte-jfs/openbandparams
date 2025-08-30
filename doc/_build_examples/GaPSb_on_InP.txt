@@ -1,0 +1,25 @@
+Lattice matching GaPSb to InP (at the growth temperature of 470 C):
+>>> a_InP = InP.a(T=Tg)
+
+>>> GaPSb_on_InP = GaPSb(a=a_InP, T=Tg)
+
+>>> InP.a(T=Tg)
+ 5.882063885
+>>> GaPSb_on_InP.a()
+ 5.882063885000305
+>>> GaPSb_on_InP.element_fraction("Ga")
+ 0.4709483112774251
+
+Get the properties at 70 C:
+Eg_Gamma 0.722934492797793
+Eg_X 1.2562170243316877
+Eg_L 1.2712248919823759
+Eg_X - Eg_Gamma 0.5332825315338947
+(Eg_X - Eg_Gamma)/kT 18.07069698090857
+Eg_L - Eg_Gamma 0.5482903991845829
+(Eg_L - Eg_Gamma)/kT 18.579250351042596
+meff_e_Gamma 0.0376215373242294
+meff_e_L_long 1.2333948722095556
+meff_e_L_trans 0.061962087106446594
+meff_e_L_DOS 0.16792604959543378
+meff_DOS_ratio 9.43023032350692

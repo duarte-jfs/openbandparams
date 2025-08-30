@@ -23,7 +23,7 @@ from openbandparams.iii_v_zinc_blende_binaries import (
 substrate = InP
 T = 300 #K
 
-x = np.linspace(0.01, 1-0.01, 100)
+x = np.linspace(0.01, 1-0.01, 50)
 E0 = 0.8 #eV wavelength at which to calculate the refractive index. 1550nm
 
 configs = {
@@ -81,11 +81,13 @@ for i,config in enumerate(configs):
 cmap = plt.get_cmap('hsv', len(configs))
 
 figs = []
-for data, title in zip([lattice_constant, bandgap, SO, refractive_index],
-                       ['Lattice constant (angstrom)',
-                        'Bandgap (eV)',
-                        'Spin-orbit splitting (eV)',
-                        'Refractive index']):
+for data, title in zip([refractive_index],
+                       ['Refractive index']):
+# for data, title in zip([lattice_constant, bandgap, SO, refractive_index],
+#                        ['Lattice constant (angstrom)',
+#                         'Bandgap (eV)',
+#                         'Spin-orbit splitting (eV)',
+#                         'Refractive index']):
 
     fig = plt.figure(figsize = (5,5))
 
@@ -111,4 +113,10 @@ for data, title in zip([lattice_constant, bandgap, SO, refractive_index],
     # fig.savefig(title + '.png', dpi = 400)
     figs.append(fig)
 
-plt.show()
+    if __name__ == '__main__':
+        import sys
+        if len(sys.argv) > 1:
+            output_filename = sys.argv[1]
+            plt.savefig(output_filename)
+        else:
+            plt.show()

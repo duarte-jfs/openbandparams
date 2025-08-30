@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Binaries &#8212; openbandparams 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinxdoc.css?v=34905f61" />
+    <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Ternaries" href="_Ternaries.html" />
+    <link rel="prev" title="Examples" href="../examples.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="_Ternaries.html" title="Ternaries"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../examples.html" title="Examples"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">openbandparams 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../examples.html" accesskey="U">Examples</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Binaries</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="binaries">
+<h1>Binaries<a class="headerlink" href="#binaries" title="Link to this heading">¶</a></h1>
+<p>Source:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">openbandparams</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">string</span>
+
+<span class="c1">#</span>
+<span class="c1">#   Copyright (c) 2013-2014, Scott J Maddox</span>
+<span class="c1">#</span>
+<span class="c1">#   This file is part of openbandparams.</span>
+<span class="c1">#</span>
+<span class="c1">#   openbandparams is free software: you can redistribute it and/or modify</span>
+<span class="c1">#   it under the terms of the GNU Affero General Public License as published</span>
+<span class="c1">#   by the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c1">#   (at your option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1">#   openbandparams is distributed in the hope that it will be useful,</span>
+<span class="c1">#   but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1">#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c1">#   GNU Affero General Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1">#   You should have received a copy of the GNU Affero General Public License</span>
+<span class="c1">#   along with openbandparams.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="c1">#</span>
+<span class="c1">#############################################################################</span>
+<span class="c1"># Make sure we import the local openbandparams version</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span>
+       <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s1">&#39;../..&#39;</span><span class="p">)))</span>
+
+<span class="c1"># Print an unformatted temperature dependent parameters</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;GaAs bandgap (at T = 300 K): &#39;</span><span class="p">,</span> <span class="n">GaAs</span><span class="o">.</span><span class="n">Eg</span><span class="p">(),</span> <span class="s1">&#39;eV&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="c1"># Print some temperature dependent parameters</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;GaAs bandgap (at T = 300 K):  </span><span class="si">%.3f</span><span class="s1"> eV&#39;</span> <span class="o">%</span> <span class="n">GaAs</span><span class="o">.</span><span class="n">Eg</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;GaAs Gamma-valley gap (at T = 300 K):  </span><span class="si">%.3f</span><span class="s1"> eV&#39;</span> <span class="o">%</span> <span class="n">GaAs</span><span class="o">.</span><span class="n">Eg_Gamma</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;GaAs X-valley gap (at T = 300 K):  </span><span class="si">%.3f</span><span class="s1"> eV&#39;</span> <span class="o">%</span> <span class="n">GaAs</span><span class="o">.</span><span class="n">Eg_X</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;GaAs bandgap (at T = 0 K):  </span><span class="si">%.3f</span><span class="s1"> eV&#39;</span> <span class="o">%</span> <span class="n">GaAs</span><span class="o">.</span><span class="n">Eg</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;InAs bandgap (at T = 300 K):  </span><span class="si">%.3f</span><span class="s1"> eV&#39;</span> <span class="o">%</span> <span class="n">InAs</span><span class="o">.</span><span class="n">Eg</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="c1"># Print some temperature independent parameter</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;GaAs electron effective mass in&#39;</span>
+          <span class="s1">&#39; the Gamma-valley:  </span><span class="si">%.3f</span><span class="s1"> m0&#39;</span> <span class="o">%</span> <span class="n">GaAs</span><span class="o">.</span><span class="n">meff_e_Gamma</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;GaAs electron effective mass in the X-valley &#39;</span>
+          <span class="s1">&#39;in the longitudinal direction:  </span><span class="si">%.3f</span><span class="s1"> m0&#39;</span> <span class="o">%</span> <span class="n">GaAs</span><span class="o">.</span><span class="n">meff_e_X_long</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;GaAs electron effective mass in the X-valley &#39;</span>
+          <span class="s1">&#39;in the transverse direction:  </span><span class="si">%.3f</span><span class="s1"> m0&#39;</span> <span class="o">%</span> <span class="n">GaAs</span><span class="o">.</span><span class="n">meff_e_X_trans</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;GaAs electron density-of-states effective mass in&#39;</span>
+          <span class="s1">&#39; the X-valley:  </span><span class="si">%.3f</span><span class="s1"> m0&#39;</span> <span class="o">%</span> <span class="n">GaAs</span><span class="o">.</span><span class="n">meff_e_X_DOS</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;GaAs electron effective mass in the L-valley &#39;</span>
+          <span class="s1">&#39;in the longitudinal direction:  </span><span class="si">%.3f</span><span class="s1"> m0&#39;</span> <span class="o">%</span> <span class="n">GaAs</span><span class="o">.</span><span class="n">meff_e_L_long</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;GaAs electron effective mass in the L-valley &#39;</span>
+          <span class="s1">&#39;in the transverse direction:  </span><span class="si">%.3f</span><span class="s1"> m0&#39;</span> <span class="o">%</span> <span class="n">GaAs</span><span class="o">.</span><span class="n">meff_e_L_trans</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;GaAs electron density-of-states effective mass in&#39;</span>
+          <span class="s1">&#39; the L-valley:  </span><span class="si">%.3f</span><span class="s1"> m0&#39;</span> <span class="o">%</span> <span class="n">GaAs</span><span class="o">.</span><span class="n">meff_e_L_DOS</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;GaAs heavy-hole effective mass &#39;</span>
+          <span class="s1">&#39;in the [100] direction:  </span><span class="si">%.3f</span><span class="s1"> m0&#39;</span> <span class="o">%</span> <span class="n">GaAs</span><span class="o">.</span><span class="n">meff_hh_100</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;GaAs heavy-hole effective mass &#39;</span>
+          <span class="s1">&#39;in the [110] direction:  </span><span class="si">%.3f</span><span class="s1"> m0&#39;</span> <span class="o">%</span> <span class="n">GaAs</span><span class="o">.</span><span class="n">meff_hh_110</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;GaAs heavy-hole effective mass &#39;</span>
+          <span class="s1">&#39;in the [111] direction:  </span><span class="si">%.3f</span><span class="s1"> m0&#39;</span> <span class="o">%</span> <span class="n">GaAs</span><span class="o">.</span><span class="n">meff_hh_111</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;GaAs light-hole effective mass &#39;</span>
+          <span class="s1">&#39;in the [100] direction:  </span><span class="si">%.3f</span><span class="s1"> m0&#39;</span> <span class="o">%</span> <span class="n">GaAs</span><span class="o">.</span><span class="n">meff_lh_100</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;GaAs light-hole effective mass &#39;</span>
+          <span class="s1">&#39;in the [110] direction:  </span><span class="si">%.3f</span><span class="s1"> m0&#39;</span> <span class="o">%</span> <span class="n">GaAs</span><span class="o">.</span><span class="n">meff_lh_110</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;GaAs light-hole effective mass &#39;</span>
+          <span class="s1">&#39;in the [111] direction:  </span><span class="si">%.3f</span><span class="s1"> m0&#39;</span> <span class="o">%</span> <span class="n">GaAs</span><span class="o">.</span><span class="n">meff_lh_111</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;GaAs split-off band effective mass:&#39;</span>
+          <span class="s1">&#39;  </span><span class="si">%.3f</span><span class="s1"> m0&#39;</span> <span class="o">%</span> <span class="n">GaAs</span><span class="o">.</span><span class="n">meff_SO</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="c1"># Print a table of material lattice parameters and bandgaps</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39; Material | Lattice Param. [Ang] | Bandgap [eV]&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;------------------------------------------------&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">mat</span> <span class="ow">in</span> <span class="n">iii_v_zinc_blende_binaries</span><span class="p">:</span>
+       <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;  | &#39;</span><span class="p">)</span>
+       <span class="k">try</span><span class="p">:</span>
+              <span class="n">a</span> <span class="o">=</span> <span class="n">mat</span><span class="o">.</span><span class="n">a</span><span class="p">()</span>
+       <span class="k">except</span><span class="p">:</span>
+              <span class="n">a</span> <span class="o">=</span> <span class="n">mat</span><span class="o">.</span><span class="n">a_300K</span><span class="p">()</span>
+       <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">a</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">12</span><span class="p">),</span> <span class="s1">&#39; &#39;</span> <span class="o">*</span> <span class="mi">4</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;  |    &#39;</span><span class="p">)</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">mat</span><span class="o">.</span><span class="n">Eg</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Result:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GaAs</span> <span class="n">bandgap</span> <span class="p">(</span><span class="n">at</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">300</span> <span class="n">K</span><span class="p">):</span>  <span class="mf">1.4224821428571428</span> <span class="n">eV</span>
+
+<span class="n">GaAs</span> <span class="n">bandgap</span> <span class="p">(</span><span class="n">at</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">300</span> <span class="n">K</span><span class="p">):</span>  <span class="mf">1.422</span> <span class="n">eV</span>
+<span class="n">GaAs</span> <span class="n">Gamma</span><span class="o">-</span><span class="n">valley</span> <span class="n">gap</span> <span class="p">(</span><span class="n">at</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">300</span> <span class="n">K</span><span class="p">):</span>  <span class="mf">1.422</span> <span class="n">eV</span>
+<span class="n">GaAs</span> <span class="n">X</span><span class="o">-</span><span class="n">valley</span> <span class="n">gap</span> <span class="p">(</span><span class="n">at</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">300</span> <span class="n">K</span><span class="p">):</span>  <span class="mf">1.899</span> <span class="n">eV</span>
+<span class="n">GaAs</span> <span class="n">bandgap</span> <span class="p">(</span><span class="n">at</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">K</span><span class="p">):</span>  <span class="mf">1.519</span> <span class="n">eV</span>
+<span class="n">InAs</span> <span class="n">bandgap</span> <span class="p">(</span><span class="n">at</span> <span class="n">T</span> <span class="o">=</span> <span class="mi">300</span> <span class="n">K</span><span class="p">):</span>  <span class="mf">0.354</span> <span class="n">eV</span>
+
+<span class="n">GaAs</span> <span class="n">electron</span> <span class="n">effective</span> <span class="n">mass</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">Gamma</span><span class="o">-</span><span class="n">valley</span><span class="p">:</span>  <span class="mf">0.062</span> <span class="n">m0</span>
+
+<span class="n">GaAs</span> <span class="n">electron</span> <span class="n">effective</span> <span class="n">mass</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">X</span><span class="o">-</span><span class="n">valley</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">longitudinal</span> <span class="n">direction</span><span class="p">:</span>  <span class="mf">1.300</span> <span class="n">m0</span>
+<span class="n">GaAs</span> <span class="n">electron</span> <span class="n">effective</span> <span class="n">mass</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">X</span><span class="o">-</span><span class="n">valley</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">transverse</span> <span class="n">direction</span><span class="p">:</span>  <span class="mf">0.230</span> <span class="n">m0</span>
+<span class="n">GaAs</span> <span class="n">electron</span> <span class="n">density</span><span class="o">-</span><span class="n">of</span><span class="o">-</span><span class="n">states</span> <span class="n">effective</span> <span class="n">mass</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">X</span><span class="o">-</span><span class="n">valley</span><span class="p">:</span>  <span class="mf">0.850</span> <span class="n">m0</span>
+
+<span class="n">GaAs</span> <span class="n">electron</span> <span class="n">effective</span> <span class="n">mass</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">L</span><span class="o">-</span><span class="n">valley</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">longitudinal</span> <span class="n">direction</span><span class="p">:</span>  <span class="mf">1.900</span> <span class="n">m0</span>
+<span class="n">GaAs</span> <span class="n">electron</span> <span class="n">effective</span> <span class="n">mass</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">L</span><span class="o">-</span><span class="n">valley</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">transverse</span> <span class="n">direction</span><span class="p">:</span>  <span class="mf">0.075</span> <span class="n">m0</span>
+<span class="n">GaAs</span> <span class="n">electron</span> <span class="n">density</span><span class="o">-</span><span class="n">of</span><span class="o">-</span><span class="n">states</span> <span class="n">effective</span> <span class="n">mass</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">L</span><span class="o">-</span><span class="n">valley</span><span class="p">:</span>  <span class="mf">0.560</span> <span class="n">m0</span>
+
+<span class="n">GaAs</span> <span class="n">heavy</span><span class="o">-</span><span class="n">hole</span> <span class="n">effective</span> <span class="n">mass</span> <span class="ow">in</span> <span class="n">the</span> <span class="p">[</span><span class="mi">100</span><span class="p">]</span> <span class="n">direction</span><span class="p">:</span>  <span class="mf">0.333</span> <span class="n">m0</span>
+<span class="n">GaAs</span> <span class="n">heavy</span><span class="o">-</span><span class="n">hole</span> <span class="n">effective</span> <span class="n">mass</span> <span class="ow">in</span> <span class="n">the</span> <span class="p">[</span><span class="mi">110</span><span class="p">]</span> <span class="n">direction</span><span class="p">:</span>  <span class="mf">0.480</span> <span class="n">m0</span>
+<span class="n">GaAs</span> <span class="n">heavy</span><span class="o">-</span><span class="n">hole</span> <span class="n">effective</span> <span class="n">mass</span> <span class="ow">in</span> <span class="n">the</span> <span class="p">[</span><span class="mi">111</span><span class="p">]</span> <span class="n">direction</span><span class="p">:</span>  <span class="mf">0.562</span> <span class="n">m0</span>
+
+<span class="n">GaAs</span> <span class="n">light</span><span class="o">-</span><span class="n">hole</span> <span class="n">effective</span> <span class="n">mass</span> <span class="ow">in</span> <span class="n">the</span> <span class="p">[</span><span class="mi">100</span><span class="p">]</span> <span class="n">direction</span><span class="p">:</span>  <span class="mf">0.094</span> <span class="n">m0</span>
+<span class="n">GaAs</span> <span class="n">light</span><span class="o">-</span><span class="n">hole</span> <span class="n">effective</span> <span class="n">mass</span> <span class="ow">in</span> <span class="n">the</span> <span class="p">[</span><span class="mi">110</span><span class="p">]</span> <span class="n">direction</span><span class="p">:</span>  <span class="mf">0.087</span> <span class="n">m0</span>
+<span class="n">GaAs</span> <span class="n">light</span><span class="o">-</span><span class="n">hole</span> <span class="n">effective</span> <span class="n">mass</span> <span class="ow">in</span> <span class="n">the</span> <span class="p">[</span><span class="mi">111</span><span class="p">]</span> <span class="n">direction</span><span class="p">:</span>  <span class="mf">0.085</span> <span class="n">m0</span>
+
+<span class="n">GaAs</span> <span class="n">split</span><span class="o">-</span><span class="n">off</span> <span class="n">band</span> <span class="n">effective</span> <span class="n">mass</span><span class="p">:</span>  <span class="mf">0.182</span> <span class="n">m0</span>
+
+ <span class="n">Material</span> <span class="o">|</span> <span class="n">Lattice</span> <span class="n">Param</span><span class="o">.</span> <span class="p">[</span><span class="n">Ang</span><span class="p">]</span> <span class="o">|</span> <span class="n">Bandgap</span> <span class="p">[</span><span class="n">eV</span><span class="p">]</span>
+<span class="o">------------------------------------------------</span>
+    <span class="n">AlN</span>  <span class="o">|</span>        <span class="mf">4.380</span>       <span class="o">|</span>    <span class="mf">4.841</span>
+    <span class="n">GaN</span>  <span class="o">|</span>        <span class="mf">4.500</span>       <span class="o">|</span>    <span class="mf">3.240</span>
+    <span class="n">InN</span>  <span class="o">|</span>        <span class="mf">4.980</span>       <span class="o">|</span>    <span class="mf">1.916</span>
+    <span class="n">AlP</span>  <span class="o">|</span>        <span class="mf">5.467</span>       <span class="o">|</span>    <span class="mf">2.488</span>
+    <span class="n">GaP</span>  <span class="o">|</span>        <span class="mf">5.450</span>       <span class="o">|</span>    <span class="mf">2.273</span>
+    <span class="n">InP</span>  <span class="o">|</span>        <span class="mf">5.870</span>       <span class="o">|</span>    <span class="mf">1.353</span>
+   <span class="n">AlAs</span>  <span class="o">|</span>        <span class="mf">5.661</span>       <span class="o">|</span>    <span class="mf">2.164</span>
+   <span class="n">GaAs</span>  <span class="o">|</span>        <span class="mf">5.653</span>       <span class="o">|</span>    <span class="mf">1.422</span>
+   <span class="n">InAs</span>  <span class="o">|</span>        <span class="mf">6.058</span>       <span class="o">|</span>    <span class="mf">0.354</span>
+   <span class="n">AlSb</span>  <span class="o">|</span>        <span class="mf">6.136</span>       <span class="o">|</span>    <span class="mf">1.577</span>
+   <span class="n">GaSb</span>  <span class="o">|</span>        <span class="mf">6.096</span>       <span class="o">|</span>    <span class="mf">0.727</span>
+   <span class="n">InSb</span>  <span class="o">|</span>        <span class="mf">6.479</span>       <span class="o">|</span>    <span class="mf">0.174</span>
+</pre></div>
+</div>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="../examples.html"
+                          title="previous chapter">Examples</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="_Ternaries.html"
+                          title="next chapter">Ternaries</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/examples/_Binaries.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="_Ternaries.html" title="Ternaries"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../examples.html" title="Examples"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">openbandparams 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../examples.html" >Examples</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Binaries</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2013-2015, Scott J Maddox.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+
+@article{guden_material_1996,
+	title = {Material parameters of quaternary {III} - {V} semiconductors for multilayer mirrors at wavelength},
+	volume = {4},
+	issn = {0965-0393, 1361-651X},
+	url = {https://iopscience.iop.org/article/10.1088/0965-0393/4/4/002},
+	doi = {10.1088/0965-0393/4/4/002},
+	number = {4},
+	urldate = {2024-08-15},
+	journal = {Modelling and Simulation in Materials Science and Engineering},
+	author = {Guden, M and Piprek, J},
+	month = jul,
+	year = {1996},
+	pages = {349--357}
+}
+
+
+
+@article{vurgaftman_2001,
+    title = {Band parameters for {III}-{V} compound semiconductors and their
+             alloys},
+    volume = {89},
+    issn = {00218979},
+    url = {http://jap.aip.org/resource/1/japiau/v89/i11/p5815_s1},
+    doi = {doi:10.1063/1.1368156},
+    number = {11},
+    urldate = {2012-06-04},
+    journal = {Journal of Applied Physics},
+    author = {Vurgaftman, I. and Meyer, J. R and Ram-Mohan, L. R},
+    month = jun,
+    year = {2001},
+    pages = {5815--5875},
+}
+

@@ -1,0 +1,64 @@
+=========================   ==================================================================================
+Parameter                   Description
+=========================   ==================================================================================
+CBO                         conduction band offset energy relative to InSb VBO
+CBO_Gamma                   Gamma-valley conduction band offset energy relative to InSb VBO
+CBO_L                       L-valley conduction band offset energy relative to InSb VBO
+CBO_X                       X-valley conduction band offset energy relative to InSb VBO
+Delta_SO                    split-off energy
+Eg                          bandgap energy
+Eg_Gamma                    Gamma-valley bandgap energy
+Eg_Gamma_0                  Gamma-valley bandgap energy at 0 K
+Eg_L                        L-valley bandgap energy
+Eg_L_0                      L-valley bandgap energy at 0 K
+Eg_X                        X-valley bandgap energy
+Eg_X_0                      X-valley bandgap energy at 0 K
+Ep                          Ep interband matrix element
+F                           F Kane remote-band parameter
+P                           
+VBO                         valance band offset energy relative to InSb VBO
+a                           lattice parameter
+a_300K                      lattice parameter at 300 K
+a_c                         conduction band deformation potential
+a_v                         valance band deformation potential
+alpha_Gamma                 Gamma-valley Varshni alpha parameter
+alpha_L                     L-valley Varshni alpha parameter
+alpha_X                     X-valley Varshni alpha parameter
+b                           b shear deformation potential
+beta_Gamma                  Gamma-valley Varshni beta parameter
+beta_L                      L-valley Varshni beta parameter
+beta_X                      X-valley Varshni beta parameter
+c11                         c11 elastic constant
+c12                         c12 elastic constant
+c44                         c44 elastic constant
+d                           d shear deformation potential
+dielectric                  static relative dielectric permittivity (i.e. <~ 1 THz)
+dielectric_high_frequency   high-frequency dielectric permittivity (i.e. >~ 100 THz)
+electron_affinity           electron affinity energy
+luttinger1                  first Luttinger parameter
+luttinger2                  second Luttinger parameter
+luttinger3                  third Luttinger parameter
+luttinger32                 difference between third and second Luttinger parameters (luttinger3 - luttinger2)
+luttinger4                  
+meff_SO                     split-off band effective mass
+meff_e_Gamma                electron effective mass in the Gamma-valley
+meff_e_Gamma_0              electron effective mass in the Gamma-valley at 0 K
+meff_e_L_DOS                electron effective mass density of states in the L-valley
+meff_e_L_long               electron effective mass in the longitudinal direction in the L-valley
+meff_e_L_trans              electron effective mass in the transverse direction in the L-valley
+meff_e_X_DOS                electron effective mass density of states in the X-valley
+meff_e_X_long               electron effective mass in the longitudinal direction in the X-valley
+meff_e_X_trans              electron effective mass in the transverse direction in the X-valley
+meff_hh_100                 heavy-hole effective mass in the <100> direction
+meff_hh_110                 heavy-hole effective mass in the <110> direction
+meff_hh_111                 heavy-hole effective mass in the <111> direction
+meff_lh_100                 light-hole effective mass in the <100> direction
+meff_lh_110                 light-hole effective mass in the <110> direction
+meff_lh_111                 light-hole effective mass in the <111> direction
+meff_so                     split-off band effective mass from the literature
+n_A                         refractive index constant A
+n_B                         refractive index constant B
+nonparabolicity             Kane band nonparabolicity parameter for the Gamma-valley
+refractive_index            
+thermal_expansion           lattice parameter thermal expansion coefficient
+=========================   ==================================================================================
