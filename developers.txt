@@ -88,7 +88,7 @@ back into the develop branch later.
 If everything checks out, and you're sure the release is bug free and ready to
 go, now is a good time to upload the documentation, since you have it built.
 The easiest way to do this is to have a separate clone of the git repository
-that always remains on the `gh-pages` branch. So, you're directory structure
+that always remains on the `gh-pages` branch. So, your directory structure
 might look something like this:
 
     code
