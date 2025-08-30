@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools", "wheel"]
+requires = ["setuptools >= 77.0.3"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -8,15 +8,17 @@ version = "1.0"  # Replace with the actual version from version.py
 description = "open source semiconductor band parameters"
 readme = "doc/PYPI_DESCRIPTION.rst"
 requires-python = ">=3.6"
-license = {text = "AGPLv3"}
+license = {file = 'LICENSE'}
 authors = [
     {name = "Scott J. Maddox", email = "smaddox@utexas.edu"},
+    {name = "Duarte Silva", email = "d.j.fernandes.da.silva@tue.nl"}
+]
+maintainers = [
     {name = "Duarte Silva", email = "d.j.fernandes.da.silva@tue.nl"}
 ]
 dependencies = [
   "distro",
   "numpy",
-  
 ]
 
 [project.urls]

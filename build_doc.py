@@ -80,8 +80,8 @@ if openbandparams.__file__ != OBP_FILE and openbandparams.__file__ != OBP_FILE+'
                        'Expected:\n'
                        '{}'.format(openbandparams.__file__,OBP_FILE))
 
-print ''
-print 'Building examples...'
+print('')
+print('Building examples...')
 examples = []
 for root, dirs, files in os.walk(EXAMPLES_DIR):
     for f in files:
@@ -150,8 +150,8 @@ Result:
     result_relpath = os.path.relpath(result_path, CWD)
 
     # run the script and save the result
-    print '  Running "{}"\n    Saving result to "{}"'.format(
-                                        example_relpath, result_relpath)
+    print('  Running "{}"\n    Saving result to "{}"'.format(
+                                        example_relpath, result_relpath))
     if not os.path.exists(os.path.dirname(result_path)):
         os.makedirs(os.path.dirname(result_path))
     if result_type == 'image':
@@ -174,8 +174,8 @@ Result:
     else:
         raise RuntimeError('Unknown result_type: {}'.format(result_type))
 
-print 'Done building examples.'
-print ''
+print('Done building examples.')
+print('')
 
 
 os.chdir('../doc')
