@@ -128,6 +128,7 @@ class IIIVZincBlendeQuaternary(IIIVZincBlendeMixedAlloy):
             '_parameters', 
             '_aliases', 
             '_xyz', 
+            'binaries',
             'ternaries', 
             '_type',
             '_x',
@@ -476,9 +477,23 @@ class IIIVZincBlendeQuaternary(IIIVZincBlendeMixedAlloy):
             c = 1-x-y
             p = 1
 
-            b_AP = self.binaries[0].get_parameter(name)(**kwargs)
-            b_BP = self.binaries[1].get_parameter(name)(**kwargs)
-            b_CP = self.binaries[2].get_parameter(name)(**kwargs)
+            b_AP = self.binaries[0].get_parameter(name)
+            if b_AP is None:
+                raise AttributeError('"{}" is missing a required parameter: "{}".'
+                                     ''.format(self.binaries[0], name))
+            b_AP = b_AP(**kwargs)
+
+            b_BP = self.binaries[1].get_parameter(name)
+            if b_BP is None:
+                raise AttributeError('"{}" is missing a required parameter: "{}".'
+                                     ''.format(self.binaries[1], name))
+            b_BP = b_BP(**kwargs)
+
+            b_CP = self.binaries[2].get_parameter(name)
+            if b_CP is None:
+                raise AttributeError('"{}" is missing a required parameter: "{}".'
+                                     ''.format(self.binaries[2], name))
+            b_CP = b_CP(**kwargs)
 
             bow_ABP = self.ternaries[1](x=0)._get_bowing(name, kwargs)
             bow_ACP = self.ternaries[2](x=0)._get_bowing(name, kwargs)
@@ -514,9 +529,23 @@ class IIIVZincBlendeQuaternary(IIIVZincBlendeMixedAlloy):
             c = 1-x-y
             p = 1
 
-            b_AP = self.binaries[0].get_parameter(name)(**kwargs)
-            b_BP = self.binaries[1].get_parameter(name)(**kwargs)
-            b_CP = self.binaries[2].get_parameter(name)(**kwargs)
+            b_AP = self.binaries[0].get_parameter(name)
+            if b_AP is None:
+                raise AttributeError('"{}" is missing a required parameter: "{}".'
+                                     ''.format(self.binaries[0], name))
+            b_AP = b_AP(**kwargs)
+
+            b_BP = self.binaries[1].get_parameter(name)
+            if b_BP is None:
+                raise AttributeError('"{}" is missing a required parameter: "{}".'
+                                     ''.format(self.binaries[1], name))
+            b_BP = b_BP(**kwargs)
+
+            b_CP = self.binaries[2].get_parameter(name)
+            if b_CP is None:
+                raise AttributeError('"{}" is missing a required parameter: "{}".'
+                                     ''.format(self.binaries[2], name))
+            b_CP = b_CP(**kwargs)
 
             bow_ABP = self.ternaries[0](x=0)._get_bowing(name, kwargs)
             bow_ACP = self.ternaries[1](x=0)._get_bowing(name, kwargs)
@@ -564,10 +593,29 @@ class IIIVZincBlendeQuaternary(IIIVZincBlendeMixedAlloy):
         # t43 = Q(x, 1) = ABC = AlInAs
         # t14 = Q(0, y) = BCD = InAsSb
 
-        b_AP = self.binaries[0].get_parameter(name)(**kwargs)
-        b_BP = self.binaries[2].get_parameter(name)(**kwargs)
-        b_BQ = self.binaries[3].get_parameter(name)(**kwargs)
-        b_AQ = self.binaries[1].get_parameter(name)(**kwargs)
+        b_AP = self.binaries[0].get_parameter(name)
+        if b_AP is None:
+            raise AttributeError('"{}" is missing a required parameter: "{}".'
+                                 ''.format(self.binaries[0], name))
+        b_AP = b_AP(**kwargs)
+        
+        b_BP = self.binaries[2].get_parameter(name)
+        if b_BP is None:
+            raise AttributeError('"{}" is missing a required parameter: "{}".'
+                                 ''.format(self.binaries[2], name))
+        b_BP = b_BP(**kwargs)
+
+        b_BQ = self.binaries[3].get_parameter(name)
+        if b_BQ is None:
+            raise AttributeError('"{}" is missing a required parameter: "{}".'
+                                 ''.format(self.binaries[3], name))
+        b_BQ = b_BQ(**kwargs)
+
+        b_AQ = self.binaries[1].get_parameter(name)
+        if b_AQ is None:
+            raise AttributeError('"{}" is missing a required parameter: "{}".'
+                                 ''.format(self.binaries[1], name))
+        b_AQ = b_AQ(**kwargs)
 
         bow_ABP = self.ternaries[0](x=0)._get_bowing(name, kwargs)
         bow_ABQ = self.ternaries[1](x=0)._get_bowing(name, kwargs)
