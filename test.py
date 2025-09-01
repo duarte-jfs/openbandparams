@@ -1,5 +1,6 @@
 #
 #   Copyright (c) 2013-2014, Scott J Maddox
+#   Copyright (c) 2025, Duarte Silva
 #
 #   This file is part of openbandparams.
 #

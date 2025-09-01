@@ -50,10 +50,7 @@ Parameters included in this version:
 - effects of biaxial strain
 - optical refractive index based on doi: 10.1088/0965-0393/4/4/002
 
-The [source code](http://github.com/scott-maddox/openbandparams) and [documentation](http://scott-maddox.github.io/openbandparams) are graciously hosted by GitHub.
+The [source code](https://github.com/duarte-jfs/openbandparams/tree/gh-pages) and [documentation](http://scott-maddox.github.io/openbandparams) are graciously hosted by GitHub.
 
-## Points to improve
 
-### Include III-V mobility values
-
-The package is built in such a way that the expansion to other material properties can be made seamlessly. Therefore, it would be quite advantageous to extend this package to include mobility values from https://pubs.aip.org/aip/jap/article/87/6/2890/489121/Empirical-low-field-mobility-model-for-III-V.
+Up to and including version 0.9, the source code has been maintained by Scott J. Maddox, and you can find it's original repo here ([source code](http://github.com/scott-maddox/openbandparams)).

@@ -1,5 +1,6 @@
 #
 #   Copyright (c) 2013-2015, Scott J Maddox
+#   Copyright (c) 2025, Duarte Silva
 #
 #   This file is part of openbandparams.
 #
@@ -36,10 +37,10 @@ class Alloy(object):
                 self.set_parameter(parameter)
 
     def __eq__(self, other):
-        return (type(self) == type(other) and
+        return all((type(self) == type(other) and
                 self.name == other.name and
                 self.elements == other.elements,
-                self._parameters == other._parameters)
+                self._parameters == other._parameters))
     
     def __getattribute__(self, name):
         if name in ['_parameters', '_aliases']:

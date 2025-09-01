@@ -1,0 +1,14 @@
+unstrained Eg 1.0017056679389311
+  strained Eg 1.1026451850964678
+
+Parameter           | Unstrained         | Strained                    
+-----------------------------------------------------------------------
+latex               | Ga_{0.7}In_{0.3}As | Ga_{0.7}In_{0.3}As/GaAs(001)
+strain_out_of_plane |                    | 0.0207045                   
+strain_in_plane     |                    | -0.0214947                  
+CBO_strain_shift    |                    | 0.158025                    
+VBO_hh_strain_shift |                    | 0.0570855                   
+VBO_lh_strain_shift |                    | -0.106647                   
+CBO                 | 0.344506           | 0.502531                    
+VBO                 | -0.6572            | -0.600115                   
+Eg                  | 1.00171            | 1.10265                     

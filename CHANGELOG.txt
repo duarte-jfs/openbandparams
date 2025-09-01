@@ -1,3 +1,11 @@
+Changes in 1.0:
+
+- updated the package to be supported by python 3
+- added refractive index calculation for the C-band
+- changed quaternary alloy interpolation scheme for a polynomial expansion
+- added a custom __deepcopy__ method to the various alloy classes
+- added an example for refractive index calculations
+
 Changes in 0.9:
 
 - added `dielectric` and `dielectric_high_frequency` parameters

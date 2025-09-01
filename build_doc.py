@@ -24,6 +24,11 @@ import os
 import sys
 import subprocess
 import shutil
+import stat
+
+def remove_readonly(func, path, excinfo):
+    os.chmod(path, stat.S_IWRITE)
+    func(path)
 
 def clear_pycache(path):
     for dirpath, dirnames, filenames in os.walk(path):
@@ -43,26 +48,26 @@ CLEAN = len(sys.argv) > 1 and sys.argv[1].lower() == 'clean'
 
 CWD = os.getcwd()
 
-# sphinx-apidoc -f -o doc -d 4 src/openbandparams/
+# sphinx-apidoc -f -o doc -d 4 src\openbandparams\
 SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
 SRC_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, 'src'))
-EXAMPLES_DIR = os.path.join(SCRIPT_DIR, 'src/openbandparams/examples')
-OBP_FILE = os.path.join(SCRIPT_DIR, 'src/openbandparams/__init__.py')
+EXAMPLES_DIR = os.path.join(SCRIPT_DIR, 'src\openbandparams\examples')
+OBP_FILE = os.path.join(SCRIPT_DIR, 'src\openbandparams\__init__.py')
 DOC_DIR = os.path.join(SCRIPT_DIR, 'doc')
-DOC_EXAMPLES_DIR = os.path.join(SCRIPT_DIR, 'doc/examples')
-BUILD_DIR = os.path.join(SCRIPT_DIR, 'doc/_build_examples')
-BUILD_EXAMPLES_DIR = os.path.join(SCRIPT_DIR, 'doc/_build_examples')
+DOC_EXAMPLES_DIR = os.path.join(SCRIPT_DIR, 'doc\examples')
+BUILD_DIR = os.path.join(SCRIPT_DIR, 'doc\_build_examples')
+BUILD_EXAMPLES_DIR = os.path.join(SCRIPT_DIR, 'doc\_build_examples')
 
 clear_rst_cache(DOC_EXAMPLES_DIR)
 
 if CLEAN:
     clear_pycache(SRC_DIR)
     if os.path.exists(BUILD_DIR):
-        shutil.rmtree(BUILD_DIR)
+        shutil.rmtree(BUILD_DIR, onerror=remove_readonly)
     if os.path.exists(DOC_EXAMPLES_DIR):
-        shutil.rmtree(DOC_EXAMPLES_DIR)
+        shutil.rmtree(DOC_EXAMPLES_DIR, onerror=remove_readonly)
     if os.path.exists(BUILD_EXAMPLES_DIR):
-        shutil.rmtree(BUILD_EXAMPLES_DIR)
+        shutil.rmtree(BUILD_EXAMPLES_DIR, onerror=remove_readonly)
 
 if not os.path.exists(DOC_EXAMPLES_DIR):
     os.mkdir(DOC_EXAMPLES_DIR)
@@ -107,7 +112,7 @@ for example in examples:
 
     # output an rst file for each example
     rst_path = os.path.join(DOC_EXAMPLES_DIR, dir, '_' + root + '.rst')
-    # ../../src/openbandparams/examples/
+    # ..\..\src\openbandparams\examples\
     rst_abs_dir = os.path.dirname(rst_path)
     example_rel = os.path.relpath(os.path.join(EXAMPLES_DIR, example),
                                   rst_abs_dir)
@@ -178,13 +183,13 @@ print('Done building examples.')
 print('')
 
 
-os.chdir('../doc')
+os.chdir('..\doc')
 
 # Run sphinx-apidoc
-subprocess.check_call(['sphinx-apidoc', '-o','apidoc', '../src/openbandparams',
+subprocess.check_call(['sphinx-apidoc', '-o','apidoc', '..\src\openbandparams',
                        # exclude paths:
-                       '../src/openbandparams/tests',
-                       '../src/openbandparams/examples',
+                       '..\src\openbandparams\tests',
+                       '..\src\openbandparams\examples',
                        ])
 
 # Build html

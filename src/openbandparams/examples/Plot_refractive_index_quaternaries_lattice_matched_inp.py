@@ -1,3 +1,24 @@
+#
+#   Copyright (c) 2013-2014, Scott J Maddox
+#   Copyright (c) 2025, Duarte Silva
+#
+#   This file is part of openbandparams.
+#
+#   openbandparams is free software: you can redistribute it and/or modify
+#   it under the terms of the GNU Affero General Public License as published
+#   by the Free Software Foundation, either version 3 of the License, or
+#   (at your option) any later version.
+#
+#   openbandparams is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU Affero General Public License for more details.
+#
+#   You should have received a copy of the GNU Affero General Public License
+#   along with openbandparams.  If not, see <http://www.gnu.org/licenses/>.
+#
+#############################################################################
+
 import numpy as np
 from matplotlib import pyplot as plt
 
@@ -23,7 +44,7 @@ from openbandparams.iii_v_zinc_blende_binaries import (
 substrate = InP
 T = 300 #K
 
-x = np.linspace(0.01, 1-0.01, 100)
+x = np.linspace(0.01, 1-0.01, 50)
 E0 = 0.8 #eV wavelength at which to calculate the refractive index. 1550nm
 
 configs = {
@@ -81,11 +102,13 @@ for i,config in enumerate(configs):
 cmap = plt.get_cmap('hsv', len(configs))
 
 figs = []
-for data, title in zip([lattice_constant, bandgap, SO, refractive_index],
-                       ['Lattice constant (angstrom)',
-                        'Bandgap (eV)',
-                        'Spin-orbit splitting (eV)',
-                        'Refractive index']):
+for data, title in zip([refractive_index],
+                       ['Refractive index']):
+# for data, title in zip([lattice_constant, bandgap, SO, refractive_index],
+#                        ['Lattice constant (angstrom)',
+#                         'Bandgap (eV)',
+#                         'Spin-orbit splitting (eV)',
+#                         'Refractive index']):
 
     fig = plt.figure(figsize = (5,5))
 
@@ -111,4 +134,10 @@ for data, title in zip([lattice_constant, bandgap, SO, refractive_index],
     # fig.savefig(title + '.png', dpi = 400)
     figs.append(fig)
 
-plt.show()
+    if __name__ == '__main__':
+        import sys
+        if len(sys.argv) > 1:
+            output_filename = sys.argv[1]
+            plt.savefig(output_filename)
+        else:
+            plt.show()

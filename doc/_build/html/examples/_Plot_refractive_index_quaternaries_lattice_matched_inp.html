@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Plot refractive index quaternaries lattice matched inp &#8212; openbandparams 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinxdoc.css?v=34905f61" />
+    <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Change Log" href="../changelog.html" />
+    <link rel="prev" title="Plot Conduction Band Offset vs Lattice Constant" href="_Plot_Conduction_Band_Offset_vs_Lattice_Constant.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../changelog.html" title="Change Log"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="_Plot_Conduction_Band_Offset_vs_Lattice_Constant.html" title="Plot Conduction Band Offset vs Lattice Constant"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">openbandparams 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../examples.html" accesskey="U">Examples</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Plot refractive index quaternaries lattice matched inp</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="plot-refractive-index-quaternaries-lattice-matched-inp">
+<h1>Plot refractive index quaternaries lattice matched inp<a class="headerlink" href="#plot-refractive-index-quaternaries-lattice-matched-inp" title="Link to this heading">¶</a></h1>
+<p>Source:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
+<span class="c1">#   Copyright (c) 2013-2014, Scott J Maddox</span>
+<span class="c1">#   Copyright (c) 2025, Duarte Silva</span>
+<span class="c1">#</span>
+<span class="c1">#   This file is part of openbandparams.</span>
+<span class="c1">#</span>
+<span class="c1">#   openbandparams is free software: you can redistribute it and/or modify</span>
+<span class="c1">#   it under the terms of the GNU Affero General Public License as published</span>
+<span class="c1">#   by the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c1">#   (at your option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1">#   openbandparams is distributed in the hope that it will be useful,</span>
+<span class="c1">#   but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1">#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c1">#   GNU Affero General Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1">#   You should have received a copy of the GNU Affero General Public License</span>
+<span class="c1">#   along with openbandparams.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="c1">#</span>
+<span class="c1">#############################################################################</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">openbandparams.iii_v_zinc_blende_quaternaries</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">AlGaPSb</span><span class="p">,</span>
+    <span class="n">AlGaAsSb</span><span class="p">,</span>
+    <span class="n">AlGaInAs</span><span class="p">,</span>
+    <span class="n">AlInPAs</span><span class="p">,</span>
+    <span class="n">AlInPSb</span><span class="p">,</span>
+    <span class="n">AlInAsSb</span><span class="p">,</span>
+    <span class="n">AlPAsSb</span><span class="p">,</span>
+    <span class="n">GaInPAs</span><span class="p">,</span>
+    <span class="n">GaInPSb</span><span class="p">,</span>
+    <span class="n">GaInAsSb</span><span class="p">,</span>
+    <span class="n">GaPAsSb</span>
+<span class="p">)</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">openbandparams.iii_v_zinc_blende_binaries</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">InP</span><span class="p">,</span>
+    <span class="n">GaAs</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">substrate</span> <span class="o">=</span> <span class="n">InP</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">300</span> <span class="c1">#K</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mi">1</span><span class="o">-</span><span class="mf">0.01</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">E0</span> <span class="o">=</span> <span class="mf">0.8</span> <span class="c1">#eV wavelength at which to calculate the refractive index. 1550nm</span>
+
+<span class="n">configs</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;config 0&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;material&#39;</span><span class="p">:</span> <span class="n">AlGaPSb</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;AlGaPSb&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.227</span><span class="o">+</span><span class="mf">0.040</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">0.645</span><span class="o">+</span><span class="mf">0.040</span><span class="o">*</span><span class="n">x</span><span class="p">)},</span>
+    <span class="s1">&#39;config 1&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;material&#39;</span><span class="p">:</span> <span class="n">AlGaAsSb</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;AlGaAsSb&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.227</span><span class="o">+</span><span class="mf">0.040</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">0.443</span><span class="o">+</span><span class="mf">0.033</span><span class="o">*</span><span class="n">x</span><span class="p">)},</span>
+    <span class="s1">&#39;config 2&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;material&#39;</span><span class="p">:</span> <span class="n">AlGaInAs</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;AlGaInAs&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.189</span><span class="o">-</span><span class="mf">0.398</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">0.405</span><span class="p">)},</span> <span class="c1">#Corrected formula from guden_piprek</span>
+    <span class="s1">&#39;config 3&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;material&#39;</span><span class="p">:</span> <span class="n">AlInPAs</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;AlInPAs&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.189</span><span class="o">-</span><span class="mf">0.398</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">0.189</span><span class="o">+</span><span class="mf">0.020</span><span class="o">*</span><span class="n">x</span><span class="p">)},</span>
+    <span class="s1">&#39;config 4&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;material&#39;</span><span class="p">:</span> <span class="n">AlInPSb</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;AlInPSb&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.610</span><span class="o">-</span><span class="mf">0.343</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">0.610</span><span class="o">+</span><span class="mf">0.075</span><span class="o">*</span><span class="n">x</span><span class="p">)},</span>
+    <span class="s1">&#39;config 5&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;material&#39;</span><span class="p">:</span> <span class="n">AlInAsSb</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;AlInAsSb&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.610</span><span class="o">-</span><span class="mf">0.343</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">0.421</span><span class="o">+</span><span class="mf">0.055</span><span class="o">*</span><span class="n">x</span><span class="p">)},</span>
+    <span class="s1">&#39;config 6&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;material&#39;</span><span class="p">:</span> <span class="n">AlPAsSb</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;AlPAsSb&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.267</span><span class="o">-</span><span class="mf">0.685</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">0.476</span><span class="p">)},</span> <span class="c1">#Corrected formula from guden_piprek</span>
+    <span class="s1">&#39;config 7&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;material&#39;</span><span class="p">:</span> <span class="n">GaInPAs</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;GaInPAs&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.189</span><span class="o">-</span><span class="mf">0.405</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">0.189</span><span class="o">+</span><span class="mf">0.013</span><span class="o">*</span><span class="n">x</span><span class="p">)},</span>
+    <span class="s1">&#39;config 8&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;material&#39;</span><span class="p">:</span> <span class="n">GaInPSb</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;GaInPSb&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.610</span><span class="o">-</span><span class="mf">0.383</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">0.610</span><span class="o">+</span><span class="mf">0.035</span><span class="o">*</span><span class="n">x</span><span class="p">)},</span>
+    <span class="s1">&#39;config 9&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;material&#39;</span><span class="p">:</span> <span class="n">GaInAsSb</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;GaInAsSb&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.610</span><span class="o">-</span><span class="mf">0.383</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">0.421</span><span class="o">+</span><span class="mf">0.022</span><span class="o">*</span><span class="n">x</span><span class="p">)},</span>
+    <span class="s1">&#39;config 10&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;material&#39;</span><span class="p">:</span> <span class="n">GaPAsSb</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;GaPAsSb&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mf">0.227</span><span class="o">-</span><span class="mf">0.645</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">0.443</span><span class="p">)}</span>
+<span class="p">}</span>
+
+<span class="n">lattice_constant</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">configs</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+<span class="n">bandgap</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">configs</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+<span class="n">SO</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">configs</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+<span class="n">refractive_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">configs</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+
+<span class="n">k</span><span class="o">=</span><span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">config</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">configs</span><span class="p">):</span>
+
+    <span class="k">if</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]:</span>
+        <span class="k">continue</span>
+
+    <span class="n">alloy</span> <span class="o">=</span> <span class="n">configs</span><span class="p">[</span><span class="n">config</span><span class="p">][</span><span class="s1">&#39;material&#39;</span><span class="p">]</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">configs</span><span class="p">[</span><span class="n">config</span><span class="p">][</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>
+
+    <span class="c1">#Filter for meaningful y values</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">y</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">y</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">))</span>
+    <span class="n">xnew</span> <span class="o">=</span> <span class="n">x</span>
+
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xnew</span><span class="p">)):</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">mat</span> <span class="o">=</span> <span class="n">alloy</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">xnew</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">a</span> <span class="o">=</span> <span class="n">InP</span><span class="o">.</span><span class="n">a</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="n">T</span><span class="p">))</span> 
+            
+            <span class="n">Eg</span> <span class="o">=</span>  <span class="n">mat</span><span class="o">.</span><span class="n">Eg</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="n">T</span><span class="p">)</span>
+            <span class="n">Eg_gamma</span> <span class="o">=</span>  <span class="n">mat</span><span class="o">.</span><span class="n">Eg_Gamma</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="n">T</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">Eg</span><span class="p">,</span> <span class="n">Eg_gamma</span><span class="p">):</span>
+                <span class="n">lattice_constant</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">mat</span><span class="o">.</span><span class="n">a</span><span class="p">(</span><span class="n">T</span> <span class="o">=</span> <span class="n">T</span><span class="p">)</span>
+                <span class="n">bandgap</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">mat</span><span class="o">.</span><span class="n">Eg_Gamma</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="n">T</span><span class="p">)</span>
+                <span class="n">SO</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">mat</span><span class="o">.</span><span class="n">Delta_SO</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="n">T</span><span class="p">)</span>
+                <span class="n">refractive_index</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">mat</span><span class="o">.</span><span class="n">refractive_index</span><span class="p">(</span><span class="n">E0</span><span class="o">=</span><span class="n">E0</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">real</span>
+
+        <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">continue</span>
+            
+
+        
+        <span class="n">k</span><span class="o">+=</span><span class="mi">1</span>
+
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;hsv&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">configs</span><span class="p">))</span>
+
+<span class="n">figs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">data</span><span class="p">,</span> <span class="n">title</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">([</span><span class="n">refractive_index</span><span class="p">],</span>
+                       <span class="p">[</span><span class="s1">&#39;Refractive index&#39;</span><span class="p">]):</span>
+<span class="c1"># for data, title in zip([lattice_constant, bandgap, SO, refractive_index],</span>
+<span class="c1">#                        [&#39;Lattice constant (angstrom)&#39;,</span>
+<span class="c1">#                         &#39;Bandgap (eV)&#39;,</span>
+<span class="c1">#                         &#39;Spin-orbit splitting (eV)&#39;,</span>
+<span class="c1">#                         &#39;Refractive index&#39;]):</span>
+
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+    <span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">config</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">configs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]:</span>
+            <span class="k">continue</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">configs</span><span class="p">[</span><span class="n">config</span><span class="p">][</span><span class="s1">&#39;label&#39;</span><span class="p">]</span>
+
+        <span class="n">data_to_plot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">data_to_plot</span><span class="p">[</span><span class="n">data_to_plot</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+        <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">data_to_plot</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">-</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">cmap</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+        
+       
+
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper center&#39;</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">rect</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="c1"># fig.savefig(title + &#39;.png&#39;, dpi = 400)</span>
+    <span class="n">figs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">output_filename</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">output_filename</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Result:</p>
+<img alt="examples/.._build_examplesPlot_refractive_index_quaternaries_lattice_matched_inp.png" src="examples/.._build_examplesPlot_refractive_index_quaternaries_lattice_matched_inp.png" />
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="_Plot_Conduction_Band_Offset_vs_Lattice_Constant.html"
+                          title="previous chapter">Plot Conduction Band Offset vs Lattice Constant</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="../changelog.html"
+                          title="next chapter">Change Log</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/examples/_Plot_refractive_index_quaternaries_lattice_matched_inp.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../changelog.html" title="Change Log"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="_Plot_Conduction_Band_Offset_vs_Lattice_Constant.html" title="Plot Conduction Band Offset vs Lattice Constant"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">openbandparams 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../examples.html" >Examples</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Plot refractive index quaternaries lattice matched inp</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2013-2015, Scott J Maddox.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    </div>
+  </body>
+</html>

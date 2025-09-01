@@ -1,0 +1,42 @@
+GaAs bandgap (at T = 300 K):  1.4224821428571428 eV
+
+GaAs bandgap (at T = 300 K):  1.422 eV
+GaAs Gamma-valley gap (at T = 300 K):  1.422 eV
+GaAs X-valley gap (at T = 300 K):  1.899 eV
+GaAs bandgap (at T = 0 K):  1.519 eV
+InAs bandgap (at T = 300 K):  0.354 eV
+
+GaAs electron effective mass in the Gamma-valley:  0.062 m0
+
+GaAs electron effective mass in the X-valley in the longitudinal direction:  1.300 m0
+GaAs electron effective mass in the X-valley in the transverse direction:  0.230 m0
+GaAs electron density-of-states effective mass in the X-valley:  0.850 m0
+
+GaAs electron effective mass in the L-valley in the longitudinal direction:  1.900 m0
+GaAs electron effective mass in the L-valley in the transverse direction:  0.075 m0
+GaAs electron density-of-states effective mass in the L-valley:  0.560 m0
+
+GaAs heavy-hole effective mass in the [100] direction:  0.333 m0
+GaAs heavy-hole effective mass in the [110] direction:  0.480 m0
+GaAs heavy-hole effective mass in the [111] direction:  0.562 m0
+
+GaAs light-hole effective mass in the [100] direction:  0.094 m0
+GaAs light-hole effective mass in the [110] direction:  0.087 m0
+GaAs light-hole effective mass in the [111] direction:  0.085 m0
+
+GaAs split-off band effective mass:  0.182 m0
+
+ Material | Lattice Param. [Ang] | Bandgap [eV]
+------------------------------------------------
+    AlN  |        4.380       |    4.841
+    GaN  |        4.500       |    3.240
+    InN  |        4.980       |    1.916
+    AlP  |        5.467       |    2.488
+    GaP  |        5.450       |    2.273
+    InP  |        5.870       |    1.353
+   AlAs  |        5.661       |    2.164
+   GaAs  |        5.653       |    1.422
+   InAs  |        6.058       |    0.354
+   AlSb  |        6.136       |    1.577
+   GaSb  |        6.096       |    0.727
+   InSb  |        6.479       |    0.174

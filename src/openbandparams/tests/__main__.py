@@ -1,5 +1,6 @@
 #
 #   Copyright (c) 2013-2014, Scott J Maddox
+#   Copyright (c) 2025, Duarte Silva
 #
 #   This file is part of openbandparams.
 #
@@ -17,8 +18,8 @@
 #   along with openbandparams.  If not, see <http://www.gnu.org/licenses/>.
 #
 #############################################################################
-from test_iii_v_zinc_blende_binary import *
-from test_iii_v_zinc_blende_ternary import *
-from test_iii_v_zinc_blende_quaternary import *
+from .test_iii_v_zinc_blende_binary import *
+from .test_iii_v_zinc_blende_ternary import *
+from .test_iii_v_zinc_blende_quaternary import *
 import unittest
 unittest.main()

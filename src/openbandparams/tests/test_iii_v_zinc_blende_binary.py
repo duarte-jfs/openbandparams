@@ -1,5 +1,6 @@
 #
 #   Copyright (c) 2013-2014, Scott J Maddox
+#   Copyright (c) 2025, Duarte Silva
 #
 #   This file is part of openbandparams.
 #
@@ -107,33 +108,33 @@ class TestIIIVZincBlendeBinary(unittest.TestCase):
         strain = 0.01 # compressive
         unstrained = GaAs
         strained = GaAs.strained_001(strain)
-        self.assert_(strained.strain_out_of_plane() == strain)
-        self.assert_(strained.strain_in_plane() < 0)
-        self.assert_(unstrained.a_c() < 0)
-        self.assert_(unstrained.a_v() < 0)
-        self.assert_(unstrained.b() < 0)
-        self.assert_(strained.CBO_strain_shift() > 0)
-        self.assert_(strained.VBO_hh_strain_shift() > 0)
-        self.assert_(strained.VBO_lh_strain_shift() < 0)
-        self.assert_(strained.VBO_strain_shift() > 0)
-        self.assert_(strained.Eg_strain_shift() > 0)
-        self.assert_(strained.Eg() > unstrained.Eg())
+        self.assertTrue(strained.strain_out_of_plane() == strain)
+        self.assertTrue(strained.strain_in_plane() < 0)
+        self.assertTrue(unstrained.a_c() < 0)
+        self.assertTrue(unstrained.a_v() < 0)
+        self.assertTrue(unstrained.b() < 0)
+        self.assertTrue(strained.CBO_strain_shift() > 0)
+        self.assertTrue(strained.VBO_hh_strain_shift() > 0)
+        self.assertTrue(strained.VBO_lh_strain_shift() < 0)
+        self.assertTrue(strained.VBO_strain_shift() > 0)
+        self.assertTrue(strained.Eg_strain_shift() > 0)
+        self.assertTrue(strained.Eg() > unstrained.Eg())
     
     def test_tensile_biaxial_strained(self):
         strain = -0.01 # tensile
         unstrained = GaAs
         strained = GaAs.strained_001(strain)
-        self.assert_(strained.strain_out_of_plane() == strain)
-        self.assert_(strained.strain_in_plane() > 0)
-        self.assert_(unstrained.a_c() < 0)
-        self.assert_(unstrained.a_v() < 0)
-        self.assert_(unstrained.b() < 0)
-        self.assert_(strained.CBO_strain_shift() < 0)
-        self.assert_(strained.VBO_hh_strain_shift() < 0)
-        self.assert_(strained.VBO_lh_strain_shift() > 0)
-        self.assert_(strained.VBO_strain_shift() > 0)
-        self.assert_(strained.Eg_strain_shift() < 0)
-        self.assert_(strained.Eg() < unstrained.Eg())
+        self.assertTrue(strained.strain_out_of_plane() == strain)
+        self.assertTrue(strained.strain_in_plane() > 0)
+        self.assertTrue(unstrained.a_c() < 0)
+        self.assertTrue(unstrained.a_v() < 0)
+        self.assertTrue(unstrained.b() < 0)
+        self.assertTrue(strained.CBO_strain_shift() < 0)
+        self.assertTrue(strained.VBO_hh_strain_shift() < 0)
+        self.assertTrue(strained.VBO_lh_strain_shift() > 0)
+        self.assertTrue(strained.VBO_strain_shift() > 0)
+        self.assertTrue(strained.Eg_strain_shift() < 0)
+        self.assertTrue(strained.Eg() < unstrained.Eg())
         
 
 if __name__ == '__main__':

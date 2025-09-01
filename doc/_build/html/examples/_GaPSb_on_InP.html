@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>GaPSb on InP &#8212; openbandparams 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinxdoc.css?v=34905f61" />
+    <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Parameters" href="_Parameters.html" />
+    <link rel="prev" title="Quaternaries" href="_Quaternaries.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="_Parameters.html" title="Parameters"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="_Quaternaries.html" title="Quaternaries"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">openbandparams 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../examples.html" accesskey="U">Examples</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">GaPSb on InP</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="gapsb-on-inp">
+<h1>GaPSb on InP<a class="headerlink" href="#gapsb-on-inp" title="Link to this heading">¶</a></h1>
+<p>Source:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
+<span class="c1">#   Copyright (c) 2013-2014, Scott J Maddox</span>
+<span class="c1">#   Copyright (c) 2025, Duarte Silva</span>
+<span class="c1">#</span>
+<span class="c1">#   This file is part of openbandparams.</span>
+<span class="c1">#</span>
+<span class="c1">#   openbandparams is free software: you can redistribute it and/or modify</span>
+<span class="c1">#   it under the terms of the GNU Affero General Public License as published</span>
+<span class="c1">#   by the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c1">#   (at your option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1">#   openbandparams is distributed in the hope that it will be useful,</span>
+<span class="c1">#   but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1">#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c1">#   GNU Affero General Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1">#   You should have received a copy of the GNU Affero General Public License</span>
+<span class="c1">#   along with openbandparams.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="c1">#</span>
+<span class="c1">#############################################################################</span>
+<span class="c1"># Make sure we import the local openbandparams version</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s1">&#39;../..&#39;</span><span class="p">)))</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">openbandparams</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Lattice matching GaPSb to InP (at the growth temperature of 470 C):&#39;</span><span class="p">)</span>
+<span class="n">Tg</span> <span class="o">=</span> <span class="mf">273.15</span> <span class="o">+</span> <span class="mi">470</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&gt;&gt;&gt; a_InP = InP.a(T=Tg)</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">a_InP</span> <span class="o">=</span> <span class="n">InP</span><span class="o">.</span><span class="n">a</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="n">Tg</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&gt;&gt;&gt; GaPSb_on_InP = GaPSb(a=a_InP, T=Tg)</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">GaPSb_on_InP</span> <span class="o">=</span> <span class="n">GaInAs</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">a_InP</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="n">Tg</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&gt;&gt;&gt; InP.a(T=Tg)</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">InP</span><span class="o">.</span><span class="n">a</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="n">Tg</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&gt;&gt;&gt; GaPSb_on_InP.a()</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">GaPSb_on_InP</span><span class="o">.</span><span class="n">a</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="n">Tg</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&gt;&gt;&gt; GaPSb_on_InP.element_fraction(&quot;Ga&quot;)</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> \
+    <span class="n">GaPSb_on_InP</span><span class="o">.</span><span class="n">element_fraction</span><span class="p">(</span><span class="s2">&quot;Ga&quot;</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Get the properties at 70 C:&#39;</span><span class="p">)</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mf">273.15</span> <span class="o">+</span> <span class="mi">70</span>
+<span class="n">kT</span> <span class="o">=</span> <span class="mf">25.8e-3</span> <span class="o">/</span> <span class="mi">300</span> <span class="o">*</span> <span class="n">T</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Eg_Gamma&#39;</span><span class="p">,</span> <span class="n">GaPSb_on_InP</span><span class="o">.</span><span class="n">Eg_Gamma</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="n">T</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Eg_X&#39;</span><span class="p">,</span> <span class="n">GaPSb_on_InP</span><span class="o">.</span><span class="n">Eg_X</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="n">T</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Eg_L&#39;</span><span class="p">,</span> <span class="n">GaPSb_on_InP</span><span class="o">.</span><span class="n">Eg_L</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="n">T</span><span class="p">))</span>
+<span class="n">xg</span> <span class="o">=</span> <span class="n">GaPSb_on_InP</span><span class="o">.</span><span class="n">Eg_X</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="n">T</span><span class="p">)</span> <span class="o">-</span> <span class="n">GaPSb_on_InP</span><span class="o">.</span><span class="n">Eg_Gamma</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="n">T</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Eg_X - Eg_Gamma&#39;</span><span class="p">,</span> <span class="n">xg</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;(Eg_X - Eg_Gamma)/kT&#39;</span><span class="p">,</span> <span class="n">xg</span> <span class="o">/</span> <span class="n">kT</span><span class="p">)</span>
+<span class="n">lg</span> <span class="o">=</span> <span class="n">GaPSb_on_InP</span><span class="o">.</span><span class="n">Eg_L</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="n">T</span><span class="p">)</span> <span class="o">-</span> <span class="n">GaPSb_on_InP</span><span class="o">.</span><span class="n">Eg_Gamma</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="n">T</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Eg_L - Eg_Gamma&#39;</span><span class="p">,</span> <span class="n">lg</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;(Eg_L - Eg_Gamma)/kT&#39;</span><span class="p">,</span> <span class="n">lg</span> <span class="o">/</span> <span class="n">kT</span><span class="p">)</span>
+<span class="n">meff_e_Gamma</span> <span class="o">=</span> <span class="n">GaPSb_on_InP</span><span class="o">.</span><span class="n">meff_e_Gamma</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="n">T</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;meff_e_Gamma&#39;</span><span class="p">,</span> <span class="n">meff_e_Gamma</span><span class="p">)</span>
+<span class="n">meff_e_L_long</span> <span class="o">=</span> <span class="n">GaPSb_on_InP</span><span class="o">.</span><span class="n">meff_e_L_long</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="n">T</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;meff_e_L_long&#39;</span><span class="p">,</span> <span class="n">meff_e_L_long</span><span class="p">)</span>
+<span class="n">meff_e_L_trans</span> <span class="o">=</span> <span class="n">GaPSb_on_InP</span><span class="o">.</span><span class="n">meff_e_L_trans</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="n">T</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;meff_e_L_trans&#39;</span><span class="p">,</span> <span class="n">meff_e_L_trans</span><span class="p">)</span>
+<span class="n">meff_e_L_DOS</span> <span class="o">=</span> <span class="p">(</span><span class="n">GaPSb_on_InP</span><span class="o">.</span><span class="n">meff_e_L_long</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="n">T</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="mf">1.</span> <span class="o">/</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span>
+                <span class="n">GaPSb_on_InP</span><span class="o">.</span><span class="n">meff_e_L_trans</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="n">T</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="mf">2.</span> <span class="o">/</span> <span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;meff_e_L_DOS&#39;</span><span class="p">,</span> <span class="n">meff_e_L_DOS</span><span class="p">)</span>
+<span class="n">DOS_ratio</span> <span class="o">=</span> <span class="p">(</span><span class="n">meff_e_L_DOS</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="mf">3.</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">meff_e_Gamma</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="mf">3.</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;meff_DOS_ratio&#39;</span><span class="p">,</span> <span class="n">DOS_ratio</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Result:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Lattice</span> <span class="n">matching</span> <span class="n">GaPSb</span> <span class="n">to</span> <span class="n">InP</span> <span class="p">(</span><span class="n">at</span> <span class="n">the</span> <span class="n">growth</span> <span class="n">temperature</span> <span class="n">of</span> <span class="mi">470</span> <span class="n">C</span><span class="p">):</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a_InP</span> <span class="o">=</span> <span class="n">InP</span><span class="o">.</span><span class="n">a</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="n">Tg</span><span class="p">)</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">GaPSb_on_InP</span> <span class="o">=</span> <span class="n">GaPSb</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">a_InP</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="n">Tg</span><span class="p">)</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">InP</span><span class="o">.</span><span class="n">a</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="n">Tg</span><span class="p">)</span>
+ <span class="mf">5.882063885</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">GaPSb_on_InP</span><span class="o">.</span><span class="n">a</span><span class="p">()</span>
+ <span class="mf">5.882063885000305</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">GaPSb_on_InP</span><span class="o">.</span><span class="n">element_fraction</span><span class="p">(</span><span class="s2">&quot;Ga&quot;</span><span class="p">)</span>
+ <span class="mf">0.4709483112774251</span>
+
+<span class="n">Get</span> <span class="n">the</span> <span class="n">properties</span> <span class="n">at</span> <span class="mi">70</span> <span class="n">C</span><span class="p">:</span>
+<span class="n">Eg_Gamma</span> <span class="mf">0.722934492797793</span>
+<span class="n">Eg_X</span> <span class="mf">1.2562170243316877</span>
+<span class="n">Eg_L</span> <span class="mf">1.2712248919823759</span>
+<span class="n">Eg_X</span> <span class="o">-</span> <span class="n">Eg_Gamma</span> <span class="mf">0.5332825315338947</span>
+<span class="p">(</span><span class="n">Eg_X</span> <span class="o">-</span> <span class="n">Eg_Gamma</span><span class="p">)</span><span class="o">/</span><span class="n">kT</span> <span class="mf">18.07069698090857</span>
+<span class="n">Eg_L</span> <span class="o">-</span> <span class="n">Eg_Gamma</span> <span class="mf">0.5482903991845829</span>
+<span class="p">(</span><span class="n">Eg_L</span> <span class="o">-</span> <span class="n">Eg_Gamma</span><span class="p">)</span><span class="o">/</span><span class="n">kT</span> <span class="mf">18.579250351042596</span>
+<span class="n">meff_e_Gamma</span> <span class="mf">0.0376215373242294</span>
+<span class="n">meff_e_L_long</span> <span class="mf">1.2333948722095556</span>
+<span class="n">meff_e_L_trans</span> <span class="mf">0.061962087106446594</span>
+<span class="n">meff_e_L_DOS</span> <span class="mf">0.16792604959543378</span>
+<span class="n">meff_DOS_ratio</span> <span class="mf">9.43023032350692</span>
+</pre></div>
+</div>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="_Quaternaries.html"
+                          title="previous chapter">Quaternaries</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="_Parameters.html"
+                          title="next chapter">Parameters</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/examples/_GaPSb_on_InP.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="_Parameters.html" title="Parameters"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="_Quaternaries.html" title="Quaternaries"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">openbandparams 1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../examples.html" >Examples</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">GaPSb on InP</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2013-2015, Scott J Maddox.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    </div>
+  </body>
+</html>

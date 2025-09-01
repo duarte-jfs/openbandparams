@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>InGaAsP lattice matched InP &#8212; openbandparams 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinxdoc.css?v=34905f61" />
+    <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">openbandparams 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">InGaAsP lattice matched InP</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="ingaasp-lattice-matched-inp">
+<h1>InGaAsP lattice matched InP<a class="headerlink" href="#ingaasp-lattice-matched-inp" title="Link to this heading">¶</a></h1>
+<p>Source:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
+<span class="c1">#   Copyright (c) 2013-2014, Scott J Maddox</span>
+<span class="c1">#   Copyright (c) 2025, Duarte Silva</span>
+<span class="c1">#</span>
+<span class="c1">#   This file is part of openbandparams.</span>
+<span class="c1">#</span>
+<span class="c1">#   openbandparams is free software: you can redistribute it and/or modify</span>
+<span class="c1">#   it under the terms of the GNU Affero General Public License as published</span>
+<span class="c1">#   by the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c1">#   (at your option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1">#   openbandparams is distributed in the hope that it will be useful,</span>
+<span class="c1">#   but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1">#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c1">#   GNU Affero General Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1">#   You should have received a copy of the GNU Affero General Public License</span>
+<span class="c1">#   along with openbandparams.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="c1">#</span>
+<span class="c1">#############################################################################</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">openbandparams</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">obp</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="n">Eg</span> <span class="o">=</span> <span class="mf">1.35</span><span class="o">-</span><span class="mf">0.72</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="mf">0.12</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">Eg_obp</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">xi</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+    <span class="n">mat</span> <span class="o">=</span> <span class="n">obp</span><span class="o">.</span><span class="n">GaInPAs</span><span class="p">(</span><span class="n">As</span> <span class="o">=</span> <span class="n">xi</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="n">obp</span><span class="o">.</span><span class="n">InP</span><span class="o">.</span><span class="n">a</span><span class="p">())</span>
+    <span class="n">Eg_obp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mat</span><span class="o">.</span><span class="n">Eg</span><span class="p">())</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">Eg</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Analytical&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">Eg_obp</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;OpenBandParams&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;As Composition&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Bandgap Energy (eV)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">output_filename</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">output_filename</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Result:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/examples/_InGaAsP_lattice_matched_InP.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">openbandparams 1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">InGaAsP lattice matched InP</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2013-2015, Scott J Maddox.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    </div>
+  </body>
+</html>

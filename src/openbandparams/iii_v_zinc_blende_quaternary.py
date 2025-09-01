@@ -1,5 +1,6 @@
 #
 #   Copyright (c) 2013-2015, Scott J Maddox
+#   Copyright (c) 2025, Duarte Silva
 #
 #   This file is part of openbandparams.
 #
@@ -109,12 +110,12 @@ class IIIVZincBlendeQuaternary(IIIVZincBlendeMixedAlloy):
             self._xyz = None
 
     def __eq__(self, other):
-        return (type(self) == type(other) and
+        return all((type(self) == type(other) and
                 self.name == other.name and
                 self.elements == other.elements,
                 self.ternaries == other.ternaries,
                 self._parameters == other._parameters,
-                self._xyz == other._xyz)
+                self._xyz == other._xyz))
     
     def __deepcopy__(self, memo):
         from copy import deepcopy
