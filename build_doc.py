@@ -55,15 +55,12 @@ EXAMPLES_DIR = os.path.join(SCRIPT_DIR, 'src\openbandparams\examples')
 OBP_FILE = os.path.join(SCRIPT_DIR, 'src\openbandparams\__init__.py')
 DOC_DIR = os.path.join(SCRIPT_DIR, 'doc')
 DOC_EXAMPLES_DIR = os.path.join(SCRIPT_DIR, 'doc\examples')
-BUILD_DIR = os.path.join(SCRIPT_DIR, 'doc\_build_examples')
 BUILD_EXAMPLES_DIR = os.path.join(SCRIPT_DIR, 'doc\_build_examples')
 
 clear_rst_cache(DOC_EXAMPLES_DIR)
 
 if CLEAN:
     clear_pycache(SRC_DIR)
-    if os.path.exists(BUILD_DIR):
-        shutil.rmtree(BUILD_DIR, onerror=remove_readonly)
     if os.path.exists(DOC_EXAMPLES_DIR):
         shutil.rmtree(DOC_EXAMPLES_DIR, onerror=remove_readonly)
     if os.path.exists(BUILD_EXAMPLES_DIR):
@@ -137,7 +134,7 @@ Result:
            underline=underline,
            result_type=result_type,
            example_rel=example_rel,
-           result_rel=result_rel))
+           result_rel=result_rel.replace("\\", "/"))) #The image directive (for some reason ??) requires forward slashes instead of backslashes.
 
     # get the absolute paths
     example_path = os.path.join(EXAMPLES_DIR, example)

@@ -7,4 +7,4 @@ Source:
 
 Result:
 
-.. literalinclude:: ..\_build_examples\GaPSb_on_InP.txt
+.. literalinclude:: ../_build_examples/GaPSb_on_InP.txt

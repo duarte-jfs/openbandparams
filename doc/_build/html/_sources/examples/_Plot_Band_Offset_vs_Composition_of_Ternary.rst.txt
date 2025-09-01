@@ -7,4 +7,4 @@ Source:
 
 Result:
 
-.. image:: ..\_build_examples\Plot_Band_Offset_vs_Composition_of_Ternary.png
+.. image:: ../_build_examples/Plot_Band_Offset_vs_Composition_of_Ternary.png

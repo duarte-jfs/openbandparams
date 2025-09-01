@@ -7,4 +7,4 @@ Source:
 
 Result:
 
-.. literalinclude:: ..\_build_examples\Ternaries_of_Ternaries.txt
+.. literalinclude:: ../_build_examples/Ternaries_of_Ternaries.txt

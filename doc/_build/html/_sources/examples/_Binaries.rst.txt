@@ -7,4 +7,4 @@ Source:
 
 Result:
 
-.. literalinclude:: ..\_build_examples\Binaries.txt
+.. literalinclude:: ../_build_examples/Binaries.txt

@@ -7,4 +7,4 @@ Source:
 
 Result:
 
-.. image:: ..\_build_examples\Plot_Valance_Band_Offset_vs_Lattice_Constant.png
+.. image:: ../_build_examples/Plot_Valance_Band_Offset_vs_Lattice_Constant.png

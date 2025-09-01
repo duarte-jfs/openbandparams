@@ -7,4 +7,4 @@ Source:
 
 Result:
 
-.. image:: ..\_build_examples\Plot_Bandgap_vs_Composition_of_Quaternary3.png
+.. image:: ../_build_examples/Plot_Bandgap_vs_Composition_of_Quaternary3.png

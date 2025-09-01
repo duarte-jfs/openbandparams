@@ -7,4 +7,4 @@ Source:
 
 Result:
 
-.. image:: ..\..\..\_build_examples\advanced\GaInAsSb_on_GaSb\Plot_Bandgap_vs_Lattice_Constant_of_Quaternary3.png
+.. image:: ../../../_build_examples/advanced/GaInAsSb_on_GaSb/Plot_Bandgap_vs_Lattice_Constant_of_Quaternary3.png
