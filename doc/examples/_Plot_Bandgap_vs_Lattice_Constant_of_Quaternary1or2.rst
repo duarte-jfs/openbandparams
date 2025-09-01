@@ -7,4 +7,4 @@ Source:
 
 Result:
 
-.. image:: ..\_build_examples\Plot_Bandgap_vs_Lattice_Constant_of_Quaternary1or2.png
+.. image:: ../_build_examples/Plot_Bandgap_vs_Lattice_Constant_of_Quaternary1or2.png

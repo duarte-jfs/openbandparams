@@ -50,7 +50,7 @@ Parameters included in this version:
 - effects of biaxial strain
 - optical refractive index based on doi: 10.1088/0965-0393/4/4/002
 
-The [source code](https://github.com/duarte-jfs/openbandparams/tree/gh-pages) and [documentation](http://scott-maddox.github.io/openbandparams) are graciously hosted by GitHub.
+The [source code](https://github.com/duarte-jfs/openbandparams/) and [documentation](https://duarte-jfs.github.io/openbandparams/) are graciously hosted by GitHub.
 
 
 Up to and including version 0.9, the source code has been maintained by Scott J. Maddox, and you can find it's original repo here ([source code](http://github.com/scott-maddox/openbandparams)).

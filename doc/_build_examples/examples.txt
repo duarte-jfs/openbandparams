@@ -1,6 +1,5 @@
 Binaries.py
 GaPSb_on_InP.py
-InGaAsP_lattice_matched_InP.py
 Parameters.py
 Plot_Bandgap_vs_Composition_of_Quaternary3.py
 Plot_Bandgap_vs_Composition_of_Ternary.py
@@ -13,6 +12,7 @@ Plot_Band_Offset_vs_Lattice_Constant.py
 Plot_Band_Offset_vs_Lattice_Constant_No_Phosphides.py
 Plot_Band_Offset_vs_Lattice_Constant_of_Strained_Binaries.py
 Plot_Conduction_Band_Offset_vs_Lattice_Constant.py
+Plot_InGaAsP_lattice_matched_InP.py
 Plot_refractive_index_quaternaries_lattice_matched_inp.py
 Plot_Valance_Band_Offset_vs_Lattice_Constant.py
 Quaternaries.py

@@ -7,4 +7,4 @@ Source:
 
 Result:
 
-.. image:: ..\_build_examples\Plot_Band_Offset_vs_Lattice_Constant_of_Strained_Binaries.png
+.. image:: ../_build_examples/Plot_Band_Offset_vs_Lattice_Constant_of_Strained_Binaries.png

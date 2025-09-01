@@ -19,12 +19,16 @@
 #
 #############################################################################
 
+import sys
+import os
+sys.path.insert(0,
+    os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 import openbandparams as obp
 import numpy as np
 from matplotlib import pyplot as plt
-import sys
 
-x=np.linspace(0,1,100)
+
+x=np.linspace(0,1,50)
 
 Eg = 1.35-0.72*x+0.12*x**2
 

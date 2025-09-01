@@ -7,4 +7,4 @@ Source:
 
 Result:
 
-.. literalinclude:: ..\_build_examples\Strained_Parameters.txt
+.. literalinclude:: ../_build_examples/Strained_Parameters.txt

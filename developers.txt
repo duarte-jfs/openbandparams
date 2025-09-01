@@ -75,12 +75,13 @@ missed any bugs:
 Also build, install, and test in a virtualenv:
 
     virtualenv venv
-    source venv/bin/activate
-    python setup.py build
-    python setup.py install
+    venv\bin\activate
+    pip install build
+    python -m build
+    pip install .
     python -m openbandparams.tests
     deactivate
-    rm -rf venv
+    rmdir /s /q venv
 
 Go ahead and fix any bugs you find in the release branch, and we'll merge them
 back into the develop branch later.

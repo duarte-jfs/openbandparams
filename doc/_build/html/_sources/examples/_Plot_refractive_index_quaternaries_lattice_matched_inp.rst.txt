@@ -7,4 +7,4 @@ Source:
 
 Result:
 
-.. image:: ..\_build_examples\Plot_refractive_index_quaternaries_lattice_matched_inp.png
+.. image:: ../_build_examples/Plot_refractive_index_quaternaries_lattice_matched_inp.png

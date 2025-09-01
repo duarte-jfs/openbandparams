@@ -7,4 +7,4 @@ Source:
 
 Result:
 
-.. literalinclude:: ..\_build_examples\References.txt
+.. literalinclude:: ../_build_examples/References.txt
