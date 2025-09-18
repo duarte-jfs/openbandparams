@@ -53,5 +53,5 @@ Parameters included in this version:
 
 The `source code`_ and `documentation`_ are graciously hosted by GitHub.
 
-.. _source code: http://github.com/scott-maddox/openbandparams
-.. _documentation: http://scott-maddox.github.io/openbandparams
+.. _source code: https://github.com/duarte-jfs/openbandparams/
+.. _documentation: https://duarte-jfs.github.io/openbandparams/

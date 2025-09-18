@@ -22,7 +22,7 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "http://scott-maddox.github.io/openbandparams"
+Homepage = "https://github.com/duarte-jfs/openbandparams"
 
 [project.optional-dependencies]
 test = ["pytest"]
